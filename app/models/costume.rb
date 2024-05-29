@@ -11,4 +11,5 @@ class Costume < ApplicationRecord
   validates :size, inclusion: { in: SIZES }
 
   # associations 
+  has_one :booking
 end
