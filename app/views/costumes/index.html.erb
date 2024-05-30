@@ -13,8 +13,14 @@
     <div class="col">
       <div class="card h-100 rounded-4">
         <div class="">
-          <img src="<%= costume.photo_url %>" class="card-img-top" alt="...">
-          <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5"><%= costume.price_per_day %>€/Day</span>
+          <% if costume.photo.present? %>
+            <%= cl_image_tag costume.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag 'https://via.placeholder.com/300', height: 300, width: 400, class: "card-img-top" %>
+          <% end %>
+          <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5">
+            <%= costume.price_per_day %>€/Day
+          </span>
         </div>
         <div class="card-body">
           <h5 class="card-title fw-bold"><%= link_to costume.name, costume_path(costume), style: "color: black; text-decoration: none;"%></h5>
@@ -29,5 +35,4 @@
       </div>
     </div>
   <% end %>
-  <!-- -->
 </div>
