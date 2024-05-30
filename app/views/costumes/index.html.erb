@@ -9,13 +9,16 @@
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <!-- A place holder for us to see the cards. We'll add the actual ruby code as we work on the controller -->
-  <% 6.times do %>
+  <% @costumes.each do |costume| %>
     <div class="col">
       <div class="card h-100 rounded-4">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="">
+          <img src="<%= costume.photo_url %>" class="card-img-top" alt="...">
+          <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5"><%= costume.price_per_day %>€/Day</span>
+        </div>
         <div class="card-body">
-          <h5 class="card-title fw-bold">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <h5 class="card-title fw-bold"><%= costume.name %></h5>
+          <p class="card-text"><%= costume.description %></p>
         </div>
         <div class="">
           <small class="text-body-secondary"><!-- In case we want something at the footer --></small>
