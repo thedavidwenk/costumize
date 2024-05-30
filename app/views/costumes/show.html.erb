@@ -6,8 +6,7 @@
       <h5 class="fw-normal"><%= @costume.size %></h5>
       <h5 class="fw-normal"><%= @costume.price_per_day %></h5>
       <p class="card-text"><%= @costume.description %></p>
-      <%= link_to "Rent this costume",  %>
-      <a href="#" class="btn btn-primary">Rent this costume</a>
+      <%= link_to "Rent this costume", new_costume_booking_path(@costume), class: "btn btn-primary" %>
     </div>
   </div>
 </div>

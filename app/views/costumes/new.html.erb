@@ -1,2 +1,19 @@
-<h1>Costumes#new</h1>
-<p>Find me in app/views/costumes/new.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-5">
+
+<h1>Create a new costume</h1>
+<p>Please fill out all the columns and upload photos.</p>
+<%= simple_form_for(@costume) do |f|  %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :category, collection: Costume::CATEGORIES %>
+          <%= f.input :size, collection: Costume::SIZES %>
+          <%= f.input :price_per_day, as: :integer %>
+          <%= f.input :thumbnail, as: :file %>
+          <%= f.submit %>
+        <% end %>
+
+    </div>
+  </div>
+</div>
