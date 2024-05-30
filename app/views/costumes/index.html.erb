@@ -17,11 +17,14 @@
           <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5"><%= costume.price_per_day %>€/Day</span>
         </div>
         <div class="card-body">
-          <h5 class="card-title fw-bold"><%= costume.name %></h5>
+          <h5 class="card-title fw-bold"><%= link_to costume.name, costume_path(costume), style: "color: black; text-decoration: none;"%></h5>
           <p class="card-text"><%= costume.description %></p>
         </div>
-        <div class="">
-          <small class="text-body-secondary"><!-- In case we want something at the footer --></small>
+        <div class="card-footer">
+          <small class="text-body-secondary">
+            <span class="bg-success-subtle p-1 rounded-4"><%= costume.category %></span>
+            <span class="bg-success-subtle p-1 rounded-4"><%= costume.size %></span>
+          </small>
         </div>
       </div>
     </div>
