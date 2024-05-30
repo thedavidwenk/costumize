@@ -4,7 +4,7 @@ class Costume < ApplicationRecord
 
   # validations
   validates :name, :category, :size, :description, :price_per_day, presence: true
-  validates :name,  :description, uniqueness: true
+  validates :name, :description, uniqueness: true
   validates :name, :description, length: { minimum: 5 }
   validates :price_per_day, numericality: { greater_than: 0 }
   validates :category, inclusion: { in: CATEGORIES }

@@ -11,8 +11,8 @@ class CostumesController < ApplicationController
 
   def new
     @costume = Costume.new
-    @SIZES = ["S", "M", "L", "XL", "XXL", "other"]
-    @CATEGORIES = ["superhero", "historical", "movie", "tv show", "animal", "other"]
+    # @SIZES = ["S", "M", "L", "XL", "XXL", "other"]
+    # @CATEGORIES = ["superhero", "historical", "movie", "tv show", "animal", "other"]
   end
 
   def create
@@ -27,6 +27,6 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :size, :price_per_day, photos: [])
+    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [])
   end
 end
