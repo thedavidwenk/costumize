@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Create a new booking for <%= @costume.name %></h1>
+
+  <%= simple_form_for([@costume, @booking]) do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit %>
+  <% end %>
+</div>
