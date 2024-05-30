@@ -7,8 +7,9 @@
 <%= simple_form_for(@costume) do |f|  %>
           <%= f.input :name %>
           <%= f.input :description %>
-          <%= f.input :size %>
-          <%= f.input :price_per_day %>
+          <%= f.input :category, collection: @CATEGORIES %>
+          <%= f.input :size, collection: @SIZES %>
+          <%= f.input :price_per_day, as: :integer %>
           <%= f.input :thumbnail, as: :file %>
           <%= f.submit %>
         <% end %>

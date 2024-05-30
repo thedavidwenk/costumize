@@ -7,10 +7,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for(costume) do |f|  %>
+        <%= simple_form_for(@costume) do |f|  %>
           <%= f.input :name %>
           <%= f.input :description %>
-          <%= f.input :size %>
+          <%= f.input :size, collection: @SIZES %>
           <%= f.input :price_per_day %>
           <%= f.input :thumbnail, as: :file %>
           <%= f.submit %>

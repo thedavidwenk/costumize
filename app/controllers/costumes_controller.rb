@@ -11,6 +11,8 @@ class CostumesController < ApplicationController
 
   def new
     @costume = Costume.new
+    @SIZES = ["S", "M", "L", "XL", "XXL", "other"]
+    @CATEGORIES = ["superhero", "historical", "movie", "tv show", "animal", "other"]
   end
 
   def create
