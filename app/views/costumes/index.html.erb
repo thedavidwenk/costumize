@@ -1,2 +1,27 @@
-<h1>Costumes#index</h1>
-<p>Find me in app/views/costumes/index.html.erb</p>
+<div class="mt-5">
+  <h1>Find your costume...</h1>
+</div>
+
+<form class="d-flex my-5" role="search">
+  <input class="form-control me-2 rounded-4" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success rounded-4" type="submit">Search</button>
+</form>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <!-- A place holder for us to see the cards. We'll add the actual ruby code as we work on the controller -->
+  <% 6.times do %>
+    <div class="col">
+      <div class="card h-100 rounded-4">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="">
+          <small class="text-body-secondary"><!-- In case we want something at the footer --></small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <!-- -->
+</div>
