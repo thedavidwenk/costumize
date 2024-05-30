@@ -3,6 +3,7 @@ class CostumesController < ApplicationController
   end
 
   def index
+    @costume = Costume.new
   end
 
   def show
