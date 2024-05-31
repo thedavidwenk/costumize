@@ -1,6 +1,8 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('background_image.jpg') %>);">
   <div class="container">
-    <h1>Need a costume? Find the perfect one or share your own with Costumize!</h1>
+    <span data-controller="typed">
+      <h1 data-typed-target="element"></h1>
+    </span>
     <p>Discover and Share Costumes with Our Creative Community.</p>
     <%= link_to "Book a Costume", costumes_path, class: "btn btn-primary" %> 
   </div>
