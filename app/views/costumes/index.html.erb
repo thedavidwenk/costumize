@@ -1,9 +1,11 @@
-<div class="mt-5">
-  <h1>Find your costume...</h1>
-</div>
+<div class="container">
+  <div class="mt-5">
+    <h1>Find your costume...</h1>
+  </div>
 
-<%= render 'costumes/search' %>
+  <%= render 'costumes/search' %>
 
-<div data-search-target="results">
-  <%= render 'costumes/results', costumes: @costumes %>
+  <div data-search-target="results">
+    <%= render 'costumes/results', costumes: @costumes %>
+  </div>
 </div>

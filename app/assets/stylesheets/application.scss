@@ -7,6 +7,13 @@
 @import "bootstrap";
 @import "font-awesome";
 
+// Import components 
+@import 'components/index';
+@import 'components/avatar';
+@import 'components/form_legend_clear';
+@import 'components/alert';
+@import 'components/navbar';
+@import 'components/banner';
+
 // Your CSS partials
-@import "components/index";
 @import "pages/index";
