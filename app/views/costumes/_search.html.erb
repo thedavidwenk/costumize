@@ -1,4 +1,23 @@
-<form class="d-flex my-5" role="search">
-  <input class="form-control me-2 rounded-4" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success rounded-4" type="submit">Search</button>
-</form>
+ <%= form_with url: costumes_path, method: :get, local: true do %>
+    <div class="row my-5">
+      <div class="col-md-4 mr-3">
+        <%= label_tag :name, "Key Words" %>
+        <%= text_field_tag :name, params[:name], class: "form-control" %>
+      </div>
+      <div class="col mr-3">
+        <%= label_tag :category, "Costume Category" %>
+        <%= select_tag :category, options_for_select(Costume.distinct.pluck(:category), params[:category]), include_blank: true, class: "form-control" %>
+      </div>
+      <div class="col mr-3">
+        <%= label_tag :size, "Size" %>
+        <%= select_tag :size, options_for_select(Costume.distinct.pluck(:size), params[:size]), include_blank: true, class: "form-control" %>
+      </div>
+      <div class="col mr-3">
+        <%= label_tag :available_date, "Available Date" %>
+        <%= date_field_tag :available_date, params[:available_date], class: "form-control" %>
+      </div>
+      <div class="col mr-3 mt-4">
+        <%= submit_tag "Search", class: "btn btn-primary form-control" %>
+      </div>
+    </div>
+  <% end %>

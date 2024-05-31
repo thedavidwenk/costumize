@@ -7,6 +7,12 @@ class CostumesController < ApplicationController
   def index
     @costumes = Costume.all
     @costume = Costume.new
+    # These variables are for the search bar functionality
+    @costumes = @costumes.where(category: params[:category]) if params[:category].present?
+    @costumes = @costumes.where(size: params[:size]) if params[:size].present?
+    @costumes = @costumes.where(available_date: params[:available_date]) if params[:available_date].present?
+    # Different from the previous 3 lines so that the user needs to be able to search for any word included in the :name string
+    @costumes = @costumes.where("name LIKE ?", "%#{params[:name]}%") if params[:name].present?
   end
 
   def show
