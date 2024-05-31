@@ -1,2 +1,7 @@
-<h1>Costumes#home</h1>
-<p>Find me in app/views/costumes/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('background_image.jpg') %>);">
+  <div class="container">
+    <h1>Need a costume? Find the perfect one or share your own with Costumize!</h1>
+    <p>Discover and Share Costumes with Our Creative Community.</p>
+    <%= link_to "Book a Costume", costumes_path, class: "btn btn-primary" %> 
+  </div>
+</div>
