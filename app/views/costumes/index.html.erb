@@ -2,6 +2,11 @@
   <h1>Find your costume...</h1>
 </div>
 
+<%= render "shared/modal_new_costume", costume: @costume %>
+<button type="button" class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#testing">
+      Create New Costume
+    </button>
+
 <form class="d-flex my-5" role="search">
   <input class="form-control me-2 rounded-4" type="search" placeholder="Search" aria-label="Search">
   <button class="btn btn-outline-success rounded-4" type="submit">Search</button>
