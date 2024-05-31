@@ -13,6 +13,12 @@ class CostumesController < ApplicationController
     @costumes = @costumes.where(available_date: params[:available_date]) if params[:available_date].present?
     # Different from the previous 3 lines so that the user needs to be able to search for any word included in the :name string
     @costumes = @costumes.where("name LIKE ?", "%#{params[:name]}%") if params[:name].present?
+
+    # Respond differently based on the request format
+    respond_to do |format|
+      format.html # Renders the default index.html.erb template
+      format.js { render partial: 'results', locals: { costumes: @costumes } }
+    end
   end
 
   def show
