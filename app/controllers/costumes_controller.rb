@@ -20,10 +20,6 @@ class CostumesController < ApplicationController
       @costumes = @costumes.where(size: params[:size])
     end
 
-    if params[:available_date].present?
-      @costumes = @costumes.where("available_date >= ?", params[:available_date])
-    end
-
     respond_to do |format|
       format.html # renders the normal index.html.erb
       format.js { render partial: 'costumes/results', locals: { costumes: @costumes } } # renders the partial for AJAX requests
