@@ -5,20 +5,24 @@ class CostumesController < ApplicationController
   end
 
   def index
-    @costumes = Costume.all
     @costume = Costume.new
-    # These variables are for the search bar functionality
-    @costumes = @costumes.where(category: params[:category]) if params[:category].present?
-    @costumes = @costumes.where(size: params[:size]) if params[:size].present?
-    @costumes = @costumes.where(available_date: params[:available_date]) if params[:available_date].present?
-    # Different from the previous 3 lines so that the user needs to be able to search for any word included in the :name string
-    # I changed from name LIKE to name ILIKE so that the search would be case insensitive
-    @costumes = @costumes.where("name ILIKE ?", "%#{params[:name]}%") if params[:name].present?
+    @costumes = Costume.all
 
-    # Respond differently based on the request format
+    if params[:name].present?
+      @costumes = @costumes.where("name ILIKE ?", "%#{params[:name]}%")
+    end
+
+    if params[:category].present?
+      @costumes = @costumes.where(category: params[:category])
+    end
+
+    if params[:size].present?
+      @costumes = @costumes.where(size: params[:size])
+    end
+
     respond_to do |format|
-      format.html # Renders the default index.html.erb template
-      format.js { render partial: 'results', locals: { costumes: @costumes } }
+      format.html # renders the normal index.html.erb
+      format.js { render partial: 'costumes/results', locals: { costumes: @costumes } } # renders the partial for AJAX requests
     end
   end
 
