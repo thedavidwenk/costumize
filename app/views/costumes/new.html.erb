@@ -10,7 +10,7 @@
           <%= f.input :category, collection: Costume::CATEGORIES %>
           <%= f.input :size, collection: Costume::SIZES %>
           <%= f.input :price_per_day, as: :integer %>
-          <%= f.input :photo, as: :file %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit %>
         <% end %>
 
