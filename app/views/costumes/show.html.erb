@@ -8,6 +8,9 @@
               <% @costume.photos.each_with_index do |photo, index| %>
                 <div class="carousel-item <%= 'active' if index == 0 %>">
                   <%= cl_image_tag photo.key, class: "d-block w-100", alt: @costume.name %>
+                  <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-4 p-3 fs-5">
+                    <%= @costume.price_per_day %>€/Day
+                  </span>
                 </div>
               <% end %>
             </div>
@@ -24,13 +27,14 @@
           <img src="https://via.placeholder.com/300" class="card-img-top" alt="No image available">
         <% end %>
       </div>
-      <div class="col-md-6">
-        <div class="card-body">
-          <h2 class="card-title"><%= @costume.name %></h2>
-          <h5 class="fw-normal"><%= @costume.size %></h5>
-          <h5 class="fw-normal"><%= @costume.price_per_day %></h5>
+      <div class="col-md-12 col-lg-6">
+        <div class="card-body d-felx flex-column">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="card-title"><%= @costume.name %></h2>
+            <h5 class=" bg-success-subtle p-1 rounded-4"> <i class="fa-solid fa-shirt"></i><strong> <%= @costume.size %> </strong> </h5>
+          </div>
           <p class="card-text"><%= @costume.description %></p>
-          <%= link_to "Rent this costume", new_costume_booking_path(@costume), class: "btn btn-primary" %>
+          <%= link_to "Rent this costume", new_costume_booking_path(@costume), class: "btn btn-primary " %>
         </div>
       </div>
     </div>
