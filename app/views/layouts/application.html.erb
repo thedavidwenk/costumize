@@ -15,8 +15,9 @@
     <div>
      <%= yield %>
     </div>
-
+  </body>
     <%= render 'shared/footer' %>
+
     <% if notice %>
         <div class="alert alert-success" data-controller="notification" data-action=""><%= notice %></div>
     <% end %>

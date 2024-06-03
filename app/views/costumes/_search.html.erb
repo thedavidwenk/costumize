@@ -3,15 +3,15 @@
     <div class="row my-5">
       <div class="col-md-4 mr-3">
         <%= label_tag :name, "Key Words" %>
-        <%= text_field_tag :name, params[:name], class: "form-control", data: { target: 'search.name' } %>
+        <%= text_field_tag :name, params[:name], placeholder: "What are you looking for?", class: "form-control", data: { target: 'search.name' } %>
       </div>
       <div class="col mr-3">
         <%= label_tag :category, "Costume Category" %>
-        <%= select_tag :category, options_for_select(Costume.distinct.pluck(:category), params[:category]), include_blank: true, class: "form-control", data: { target: 'search.category' } %>
+        <%= select_tag :category, options_for_select([["View All", "all"]] + Costume.distinct.pluck(:category), params[:category]), prompt: "Select a category", class: "form-control", data: { target: 'search.category' } %>
       </div>
       <div class="col mr-3">
         <%= label_tag :size, "Size" %>
-        <%= select_tag :size, options_for_select(Costume.distinct.pluck(:size), params[:size]), include_blank: true, class: "form-control", data: { target: 'search.size' } %>
+        <%= select_tag :size, options_for_select([["View All", "all"]] + Costume.distinct.pluck(:size), params[:size]), prompt: "Select a size", class: "form-control", data: { target: 'search.size' } %>
       </div>
       <div class="col mr-3">
         <%= label_tag :available_date, "Available Date" %>
@@ -20,4 +20,3 @@
     </div>
   <% end %>
 </div>
-
