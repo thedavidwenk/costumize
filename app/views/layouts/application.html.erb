@@ -17,12 +17,13 @@
     </div>
 
     <%= render 'shared/footer' %>
-    <% if notice %>
-      <div class="alert alert-success" data-controller="notification" data-target="notice"><%= notice %></div>
-    <% end %>
 
     <% if alert %>
-      <div class="alert alert-danger" data-controller="notification" data-target="notice><%= alert %></div>
+      <div class="alert alert-danger" data-controller="notification"><%= alert %></div>
+    <% end %>
+
+    <% if notice %>
+      <div class="alert alert-success" data-controller="notification"><%= notice %></div>
     <% end %>
   </body>
 </html>

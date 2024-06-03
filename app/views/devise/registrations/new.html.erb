@@ -5,7 +5,9 @@
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div data-controller="notification">
   <%= f.error_notification %>
+</div>
 
   <div class="form-inputs">
     <%= f.input :first_name,
