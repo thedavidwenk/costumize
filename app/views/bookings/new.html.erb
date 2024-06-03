@@ -2,8 +2,8 @@
   <h1>Create a new booking for <%= @costume.name %></h1>
 
   <%= simple_form_for([@costume, @booking]) do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit %>
+    <%= f.input :start_date, input_html: { id: "start_date" } %>
+    <%= f.input :end_date, input_html: { id: "end_date" } %>
+    <%= f.submit "Book now", class: "btn btn-primary" %>
   <% end %>
 </div>
