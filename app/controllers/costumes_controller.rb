@@ -37,7 +37,7 @@ class CostumesController < ApplicationController
   def create
     @costume = Costume.new(costume_params)
     if @costume.save
-      redirect_to root_path
+      redirect_to costume_path(@costume)
     else
       render :new, status: :unprocessable_entity
     end
