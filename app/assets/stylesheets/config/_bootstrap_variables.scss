@@ -12,7 +12,7 @@ $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    $purple;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -20,9 +20,15 @@ $warning:    $orange;
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;
-$border-radius:               .125rem;
+$border-radius:               .25rem;
 $border-radius-lg:            .25rem;
 $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
-// Override other variables below!
+// Override other variables below! UNFINISHED
+$btn-primary-bg: $purple;
+$btn-primary-border: $purple;
+$btn-primary-color: #fff;
+
+$link-color: $purple;
+$link-hover-color: $dark-purple;
