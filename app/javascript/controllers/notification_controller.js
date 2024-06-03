@@ -1,17 +1,10 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="notification"
 export default class extends Controller {
-  static targets = ["notice", "alert"];
-
   connect() {
-    console.log("Hello WOrld")
-    this.elementTarget.textContent = "";
-
-    const notice = () => {
-      setTimeout(() => {
-        const notification = document.querySelector('.notification');
-        notification.classList.add('d-none');
-      }, 5000);
-    }
+    setTimeout(() => {
+      this.element.remove();
+    }, 5000);
   }
 }
