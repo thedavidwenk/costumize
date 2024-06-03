@@ -17,7 +17,12 @@
     </div>
 
     <%= render 'shared/footer' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+        <div class="alert alert-success" data-controller="notification" data-action=""><%= notice %></div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger alert"><%= alert %></div>
+    <% end %>
   </body>
 </html>
