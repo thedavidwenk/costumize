@@ -8,5 +8,12 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 150px;
+}
+
+.nav-link {
+  &:hover {
+    color: $link-color;
+    text-decoration: underline;
+  }
 }
