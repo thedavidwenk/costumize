@@ -24,8 +24,6 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
               <%= link_to "Add New Costume", new_costume_path, class: "dropdown-item", data: { toggle: "modal", target: "#new-costume" } %>
-<%# I tried inserting the modal here but so far it doesn't work. Leaving it here to pick up later. %>
-                  <%# <%= render 'shared/modal_new_costume', costume: @costume %>
 
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
