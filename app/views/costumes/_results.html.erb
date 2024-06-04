@@ -1,16 +1,8 @@
-<<<<<<< responsive-cards
-<div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-xs-1">
-  <% @costumes.each do |costume| %>
-    <div class="col mb-3">
-      <%= link_to costume_path(costume), class: "text-decoration-none text-dark" do %><!-- This makes the entire card clickable, there is an end ot the loop at the bottom -->
-        <div class="card h-100 rounded-4">
-=======
 <div class="row row-cols-1 row-cols-md-4 g-4" data-controller="card-hover">
   <% @costumes.each do |costume| %>
     <div class="col">
       <%= link_to costume_path(costume), class: "text-decoration-none text-dark" do %><!-- This makes the entire card clickable, there is an end of the loop at the bottom -->
         <div class="card h-100 rounded-4" data-action="mouseover->card-hover#addHoverEffect mouseout->card-hover#removeHoverEffect">
->>>>>>> master
           <div class="image-container">
             <% if costume.photos.present? %>
               <%= cl_image_tag costume.photos.first.key, class: "card-img-top", style: "height: 400px; width: 100%; object-fit: cover;" %>
