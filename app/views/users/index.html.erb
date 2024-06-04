@@ -1,14 +1,14 @@
-<div class="container mb-5 pb-5">
-  <div class="my-4">
+<div class="container mb-4">
+  <div class="my-5">
     <h1>Account Overview</h1>
   </div>
 
-  <ul class="nav nav-fill nav-tabs" role="tablist">
+  <ul class="nav nav-tabs justify-content-start" role="tablist">
     <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="fill-tab-0" data-bs-toggle="tab" href="#fill-tabpanel-0" role="tab" aria-controls="fill-tabpanel-0" aria-selected="true">My Costumes</a>
+      <a class="nav-link active link-underline link-underline-opacity-0" id="fill-tab-0" data-bs-toggle="tab" href="#fill-tabpanel-0" role="tab" aria-controls="fill-tabpanel-0" aria-selected="true"><i class="fa-solid fa-shirt"></i> My Costumes</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="fill-tab-1" data-bs-toggle="tab" href="#fill-tabpanel-1" role="tab" aria-controls="fill-tabpanel-1" aria-selected="false">My Rentals</a>
+      <a class="nav-link link-underline link-underline-opacity-0" id="fill-tab-1" data-bs-toggle="tab" href="#fill-tabpanel-1" role="tab" aria-controls="fill-tabpanel-1" aria-selected="false"><i class="fa-regular fa-calendar"></i> My Rentals</a>
     </li>
   </ul>
   <div class="tab-content pt-5" id="tab-content">
@@ -52,34 +52,32 @@
       </div>
     </div>
 
+    <div class="tab-pane" id="fill-tabpanel-1" role="tabpanel" aria-labelledby="fill-tab-1">
+      <%# Bookings %>
+      <div class="mx-3">
+        <h2>My Rentals (as Renter)</h2>
+        <p>These are all costumes you have rented</p>
 
-<div class="tab-pane" id="fill-tabpanel-1" role="tabpanel" aria-labelledby="fill-tab-1">
-  <%# Bookings %>
-  <div class="mx-3">
-    <h2>My Rentals (as Renter)</h2>
-    <p>These are all costumes you have rented</p>
-
-    <div class="row">
-      <% @bookings.each do |booking| %>
-        <div class="col-md-6 col-lg-4 mb-3">
-          <div class="card h-100 rounded-4">
-            <div class="card-body">
-              <h5 class="card-title fw-bold"> <%= booking.costume.name %></h5>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Booking Start Date: <%= booking.start_date.strftime("%d.%m.%y") %></li>
-                <li class="list-group-item">Booking End Date: <%= booking.end_date.strftime("%d.%m.%y") %></li>
-                <% if booking.costume.present? && booking.costume.user.present? %>
-                  <li class="list-group-item">Costume Owner: <%= booking.costume.user.first_name %></li>
-                <% end %>
-              </ul>
+        <div class="row">
+          <% @bookings.each do |booking| %>
+            <div class="col-md-6 col-lg-4 mb-3">
+              <div class="card h-100 rounded-4">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold"> <%= booking.costume.name %></h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Booking Start Date: <%= booking.start_date.strftime("%d.%m.%y") %></li>
+                    <li class="list-group-item">Booking End Date: <%= booking.end_date.strftime("%d.%m.%y") %></li>
+                    <% if booking.costume.present? && booking.costume.user.present? %>
+                      <li class="list-group-item">Costume Owner: <%= booking.costume.user.first_name %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-</div>
-
 
   </div>
 </div>
