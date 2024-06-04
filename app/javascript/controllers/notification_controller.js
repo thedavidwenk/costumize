@@ -7,6 +7,6 @@ export default class extends Controller {
     const notificationElement = this.element;
     setTimeout(() => {
       notificationElement.remove();
-    }, 5000);
+    }, 3000);
   }
 }
