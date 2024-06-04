@@ -6,21 +6,23 @@
       <h1>Your Costumes</h1>
       <p>Showing the users costumes here:</p>
       <p><%= current_user.first_name %></p>
-
+      <% costumes = current_user.costumes %>
+      <p><%= costumes.each { |costume| costume.name } %></p>
 
     </div>
   </div>
 </div>
 
 
-<%# RENTALS %>
+<%# BOOKINGS %>
 <div class="container my-5 border">
   <div class="row d-flex justify-content-center">
     <div class="col-10">
 
-      <h1>Your Rentals</h1>
-      <p>Showing the users rentals here:</p>
-      <p><%= @bookings %></p>
+      <h1>Your Bookings</h1>
+      <p>Showing the users bookings here:</p>
+      <p><% user = current_user %></p>
+
 
     </div>
   </div>
