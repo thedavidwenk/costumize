@@ -30,5 +30,12 @@ $btn-primary-bg: $purple;
 $btn-primary-border: $purple;
 $btn-primary-color: #fff;
 
-$link-color: $purple;
-$link-hover-color: $dark-purple;
+$link-color: black;
+$link-hover-color: $purple;
+$link-active-color: $purple;
+
+// Specific overrides for nav-tabs
+$nav-tabs-link-active-color: $purple;
+$nav-tabs-link-hover-color: $dark-purple;
+$nav-tabs-link-active-bg: $body-bg;
+$nav-tabs-border-color: rgb(221, 221, 221)  ;
