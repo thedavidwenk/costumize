@@ -1,6 +1,6 @@
-<div class="row row-cols-1 row-cols-md-4 g-4" data-controller="card-hover">
+<div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-xs-1" data-controller="card-hover">
   <% @costumes.each do |costume| %>
-    <div class="col">
+    <div class="col mb-3">
       <%= link_to costume_path(costume), class: "text-decoration-none text-dark" do %><!-- This makes the entire card clickable, there is an end of the loop at the bottom -->
         <div class="card h-100 rounded-4" data-action="mouseover->card-hover#addHoverEffect mouseout->card-hover#removeHoverEffect">
           <div class="image-container">
@@ -28,4 +28,3 @@
     </div>
   <% end %>
 </div>
-
