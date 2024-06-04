@@ -1,4 +1,4 @@
-<%# BOOKINGS %>
+<%# Rentals %>
 <div class="container my-5">
   <div class="row d-flex justify-content-center border">
     <div class="col-10">
@@ -13,7 +13,7 @@
 </div>
 
 
-<%# RENTALS %>
+<%# Bookings %>
 <div class="container my-5 border">
   <div class="row d-flex justify-content-center">
     <div class="col-10">
@@ -23,9 +23,14 @@
       <ul>
       <% @bookings.each do |booking| %>
         <li><%= booking.costume.name %></li>
-        <li><%= booking.costume.user.first_name %></li>
+        <li><%= booking.start_date %></li>
+        <li><%= booking.end_date %></li>
       <% end %>
       </ul>
+
+
+
+
 
     </div>
   </div>
