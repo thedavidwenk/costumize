@@ -1,33 +1,44 @@
-<%# Rentals %>
-<div class="container my-5">
-  <div class="row d-flex justify-content-center border">
-    <div class="col-10">
-
-      <h1>Your Costumes</h1>
-      <p>Showing the users costumes here:</p>
-      <p><%= current_user.first_name %></p>
-
-
-    </div>
+<div class="container">
+  <div class="my-4">
+    <h1>Account Overview</h1>
   </div>
-</div>
 
-
-<%# Bookings %>
-<div class="container my-5 border">
-  <div class="row d-flex justify-content-center">
-    <div class="col-10">
-
-      <h1><%= current_user.first_name %>s Rentals</h1>
-      <p>Showing the users rentals here:</p>
-      <ul>
-      <% @bookings.each do |booking| %>
-        <li><%= booking.costume.name %></li>
-        <li><%= booking.start_date %></li>
-        <li><%= booking.end_date %></li>
-        <li><%= booking.costume.user.first_name %></li>
-      <% end %>
-      </ul>
+  <ul class="nav nav-fill nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="fill-tab-0" data-bs-toggle="tab" href="#fill-tabpanel-0" role="tab" aria-controls="fill-tabpanel-0" aria-selected="true">My Costumes</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="fill-tab-1" data-bs-toggle="tab" href="#fill-tabpanel-1" role="tab" aria-controls="fill-tabpanel-1" aria-selected="false">My Rentals</a>
+    </li>
+  </ul>
+  <div class="tab-content pt-5" id="tab-content">
+    <div class="tab-pane active" id="fill-tabpanel-0" role="tabpanel" aria-labelledby="fill-tab-0"> 
+        <%# Rentals %>
+        <div class="mx-3">
+          <h2>Your Costumes</h1>
+          <p>These are all costumes you have created for rental</p>
+          <% costumes = current_user.costumes %>
+          <% costumes.each do |costume| %>
+            <p>  <%= costume.name  %></p> 
+          <% end %>
+        </div>
+      </div>
+    <div class="tab-pane" id="fill-tabpanel-1" role="tabpanel" aria-labelledby="fill-tab-1">
+      <%# Bookings %>
+      <div class="mx-3">
+        <h2>My Rentals</h2>
+        <p>These are all costumes you have rented</p>
+        <ul>
+        <% @bookings.each do |booking| %>
+          <li>Rented Costume: <%= booking.costume.name %></li>
+          <li>Booking Start Date: <%= booking.start_date.strftime("%d.%m.%y") %></li>
+          <li>Booking End Date: <%= booking.end_date.strftime("%d.%m.%y") %></li>
+          <% if booking.costume.present? && booking.costume.user.present? %>
+            <li>Costume Owner: <%= booking.costume.user.first_name %></li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
