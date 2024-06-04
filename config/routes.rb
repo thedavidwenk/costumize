@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  get 'users/index'
   root to: "costumes#home"
 
   devise_for :users
 
   resources :costumes do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :index]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

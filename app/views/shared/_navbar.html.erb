@@ -25,7 +25,10 @@
 
               <%= link_to "Add New Costume", new_costume_path, class: "dropdown-item", data: { toggle: "modal", target: "#new-costume" } %>
 
+              <%= link_to "Account Overview", 'users/index', class: "dropdown-item" %>
+
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+
             </div>
           </li>
         <% else %>

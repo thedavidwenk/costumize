@@ -12,6 +12,7 @@ class Costume < ApplicationRecord
 
   # associations
   has_one :booking
+  belongs_to :user
 
   # active storage
   has_many_attached :photos

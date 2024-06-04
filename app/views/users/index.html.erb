@@ -1,0 +1,85 @@
+<div class="container mb-5 pb-5">
+  <div class="my-4">
+    <h1>Account Overview</h1>
+  </div>
+
+  <ul class="nav nav-fill nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="fill-tab-0" data-bs-toggle="tab" href="#fill-tabpanel-0" role="tab" aria-controls="fill-tabpanel-0" aria-selected="true">My Costumes</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="fill-tab-1" data-bs-toggle="tab" href="#fill-tabpanel-1" role="tab" aria-controls="fill-tabpanel-1" aria-selected="false">My Rentals</a>
+    </li>
+  </ul>
+  <div class="tab-content pt-5" id="tab-content">
+    <div class="tab-pane active" id="fill-tabpanel-0" role="tabpanel" aria-labelledby="fill-tab-0">
+      <%# Rentals %>
+      <div class="mx-3">
+        <h2>Your Costumes</h2>
+        <p>These are all costumes you have created for rental</p>
+
+        <div class="row" data-controller="card-hover">
+          <% costumes = current_user.costumes %>
+          <% costumes.each do |costume| %>
+            <div class="col-md-6 col-lg-4 g-4">
+              <%= link_to costume_path(costume), class: "text-decoration-none text-dark" do %>
+                <div class="card h-100 rounded-4" data-action="mouseover->card-hover#addHoverEffect mouseout->card-hover#removeHoverEffect">
+                  <div class="image-container">
+                    <% if costume.photos.present? %>
+                      <%= cl_image_tag costume.photos.first.key, class: "card-img-top", style: "height: 400px; width: 100%; object-fit: cover;" %>
+                    <% else %>
+                      <%= image_tag 'https://via.placeholder.com/400x300', class: "card-img-top", style: "height: 400px; width: 100%; object-fit: cover;" %>
+                    <% end %>
+                    <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5">
+                      <%= costume.price_per_day %>€/Day
+                    </span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold"><%= costume.name %></h5>
+                    <p class="card-text"><%= costume.description %></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">
+                      <span class="bg-success-subtle p-1 rounded-4"><%= costume.category %></span>
+                      <span class="bg-success-subtle p-1 rounded-4"><%= costume.size %></span>
+                    </small>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+<div class="tab-pane" id="fill-tabpanel-1" role="tabpanel" aria-labelledby="fill-tab-1">
+  <%# Bookings %>
+  <div class="mx-3">
+    <h2>My Rentals (as Renter)</h2>
+    <p>These are all costumes you have rented</p>
+
+    <div class="row">
+      <% @bookings.each do |booking| %>
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="card h-100 rounded-4">
+            <div class="card-body">
+              <h5 class="card-title fw-bold"> <%= booking.costume.name %></h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Booking Start Date: <%= booking.start_date.strftime("%d.%m.%y") %></li>
+                <li class="list-group-item">Booking End Date: <%= booking.end_date.strftime("%d.%m.%y") %></li>
+                <% if booking.costume.present? && booking.costume.user.present? %>
+                  <li class="list-group-item">Costume Owner: <%= booking.costume.user.first_name %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</div>

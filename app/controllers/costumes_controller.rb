@@ -40,6 +40,8 @@ class CostumesController < ApplicationController
 
   def create
     @costume = Costume.new(costume_params)
+    @costume.user = current_user
+    
     if @costume.save
       redirect_to costume_path(@costume)
     else
@@ -50,16 +52,7 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [])
+    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [] )
   end
 
-  private
-
-  # def set_costumes
-  #   @costume = Costume.find(params[:id])
-  # end
-
-  # def costume_params
-  #   params.require(:costume).permit(:name, :category, :size, :description, :price_per_day, photos: [])
-  # end
 end
