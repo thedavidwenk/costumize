@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/index'
   root to: "costumes#home"
 
   devise_for :users
