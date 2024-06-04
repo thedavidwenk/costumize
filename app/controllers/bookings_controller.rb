@@ -14,11 +14,15 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @costume = Costume.find(params[:costume_id])
+    # user needs to be set
+    @booking.user = current_user
+    # costume needs to be set
     @booking.costume = @costume
+
     if @booking.save
-      redirect_to restaurant_path(@costume)
+      redirect_to users_index_path(@costume)
     else
-      render :new, status: :unprocessable_entity
+      render :costumes[@costume], status: :unprocessable_entity
     end
   end
 
