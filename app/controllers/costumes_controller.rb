@@ -41,7 +41,7 @@ class CostumesController < ApplicationController
   def create
     @costume = Costume.new(costume_params)
     @costume.user = current_user
-    
+
     if @costume.save
       redirect_to costume_path(@costume)
     else
@@ -50,7 +50,7 @@ class CostumesController < ApplicationController
   end
 
   def destroy
-    @costume = Costume.find(params[:id])     
+    @costume = Costume.find(params[:id])
     @costume.destroy!
     redirect_to users_index_path, status: :see_other
   end
@@ -58,7 +58,7 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [] )
+    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [])
   end
 
 end
