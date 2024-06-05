@@ -49,6 +49,12 @@ class CostumesController < ApplicationController
     end
   end
 
+  def destroy
+    @costume = Costume.find(params[:id])     
+    @costume.destroy!
+    redirect_to users_index_path, status: :see_other
+  end
+
   private
 
   def costume_params
