@@ -7,9 +7,9 @@
 
 .hover-danger-icon {
   color: black;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .hover-danger-icon:hover {
-  color: red;
+  color: $purple;
 }
