@@ -1,5 +1,6 @@
 class CostumesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
+  before_action :set_costume, only: [:edit, :update, :remove_photo]
 
   def home
   end
@@ -55,13 +56,24 @@ class CostumesController < ApplicationController
   end
 
   def update
-    @costume = Costume.find(params[:id])
-
-    if @costume.update(costume_params)
-      redirect_to users_index_path
-    else
-      render :edit, status: :unprocessable_entity
+    if costume_params[:existing_photos].present?
+      @costume.photos.each do |photo|
+        photo.purge unless costume_params[:existing_photos].include?(photo.key)
+      end
     end
+
+    if @costume.update(costume_params.except(:existing_photos))
+      redirect_to @costume, notice: 'Costume was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def remove_photo
+    @costume = Costume.find(params[:id])
+    photo = @costume.photos.find(params[:photo_id])
+    photo.purge
+    redirect_to edit_costume_path(@costume), notice: 'Photo was successfully removed.'
   end
 
   def destroy
@@ -73,7 +85,10 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [])
+    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, { existing_photos: [] }, photos: [])
   end
 
+  def set_costume
+    @costume = Costume.find(params[:id])
+  end
 end

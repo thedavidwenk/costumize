@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-5">
+      <%= link_to "Back To Results", costumes_path %>
+      <h1>Edit Your Costume</h1>
+      <p>Please update the columns and upload photos.</p>
+      <%= simple_form_for(@costume) do |f|  %>
+        <%= f.input :name, autofocus: true, required: true %>
+        <%= f.input :description, as: :text, required: true %>
+        <%= f.input :category, collection: Costume::CATEGORIES, required: true %>
+        <%= f.input :size, collection: Costume::SIZES, required: true %>
+        <%= f.input :price_per_day, as: :integer, input_html: { min: 0 }, required: true %>
+
+        <!-- Display current photos -->
+        <div class="current-photos">
+          <h5>Current Photos</h5>
+          <% @costume.photos.each do |photo| %>
+            <div class="photo">
+              <%= image_tag photo.url, size: "100x100" %>
+              <%= link_to "Remove", remove_photo_costume_path(@costume, photo_id: photo.id), method: :delete, data: { confirm: "Are you sure you want to remove this photo?" } %>
+              <%= f.hidden_field :existing_photos, value: photo.key, multiple: true %> <!-- Hidden field for existing photos -->
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Input for new photos -->
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

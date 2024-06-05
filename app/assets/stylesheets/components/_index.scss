@@ -13,3 +13,19 @@
 .hover-danger-icon:hover {
   color: $purple;
 }
+
+.link i {
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+.link i.fa-pen {
+    border-bottom: none;
+}
+
+.link:hover i {
+    border: none;
+    outline: none;
+    text-decoration: none;
+}

@@ -40,6 +40,9 @@
                       <p class="card-text"><%= costume.description %></p>
                     </div>
                     <div>
+                      <%= link_to edit_costume_path(costume), class: "link hover-danger-icon mx-1" do %>
+                       <i class="fa-solid fa-pen"></i>
+                      <% end %>
                       <%= link_to costume_path(costume), method: :delete, class: "link hover-danger-icon", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
                         <i class="fas fa-trash-alt"></i>
                       <% end %>
