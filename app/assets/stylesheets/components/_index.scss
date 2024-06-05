@@ -3,3 +3,13 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+
+
+.hover-danger-icon {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.hover-danger-icon:hover {
+  color: red;
+}
