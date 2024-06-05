@@ -4,12 +4,6 @@ class UsersController < ApplicationController
     @bookings = current_user.bookings
   end
 
-  def destroy
-    @costume = Costume.find(params[:id])     
-    @costume.destroy!
-    redirect_to users_index_path, status: :see_other
-  end
-
   private
   
   def set_costumes
