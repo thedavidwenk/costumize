@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @costume = Costume.find(params[:costume_id])
   end
 
   def create
@@ -17,14 +16,10 @@ class BookingsController < ApplicationController
     @booking.costume = @costume
     @booking.user = current_user
 
-    Rails.logger.info "Booking Params: #{booking_params.inspect}"
-    Rails.logger.info "Booking Valid: #{@booking.valid?}"
-    Rails.logger.info "Booking Errors: #{@booking.errors.full_messages}"
-
     if @booking.save
-      redirect_to users_index_path(@costume)
+      redirect_to booking_path(@booking)
     else
-      render :costumes[@costume], alert: "Booking failed. Please try again", status: :unprocessable_entity
+      render :new, alert: "Booking failed. Please try again", status: :unprocessable_entity
     end
   end
 
