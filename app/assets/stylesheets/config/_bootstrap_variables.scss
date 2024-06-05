@@ -7,12 +7,12 @@
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$body-bg:                #fff;
 $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    $purple;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -20,9 +20,22 @@ $warning:    $orange;
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;
-$border-radius:               .125rem;
+$border-radius:               .25rem;
 $border-radius-lg:            .25rem;
 $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
 // Override other variables below!
+$btn-primary-bg: $purple;
+$btn-primary-border: $purple;
+$btn-primary-color: #fff;
+
+$link-color: black;
+$link-hover-color: $purple;
+$link-active-color: $purple;
+
+// Specific overrides for nav-tabs
+$nav-tabs-link-active-color: $purple;
+$nav-tabs-link-hover-color: $dark-purple;
+$nav-tabs-link-active-bg: $body-bg;
+$nav-tabs-border-color: rgb(221, 221, 221)  ;

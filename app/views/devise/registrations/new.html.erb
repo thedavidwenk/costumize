@@ -1,28 +1,24 @@
-<div class="container">
+<div class="container my-5">
   <div class="row d-flex justify-content-center">
     <div class="col-5">
 
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div data-controller="notification">
   <%= f.error_notification %>
+</div>
 
   <div class="form-inputs">
     <%= f.input :first_name,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                autofocus: true,
+                required: true %>
     <%= f.input :last_name,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                required: true %>
     <%= f.input :address,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                required: true %>
     <%= f.input :email,
                 required: true,
-                autofocus: true,
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,
@@ -34,11 +30,11 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn-primary my-2" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<span><%= render "devise/shared/links" %> if youlready have an account</span>
 
     </div>
   </div>

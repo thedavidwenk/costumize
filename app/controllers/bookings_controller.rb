@@ -2,8 +2,14 @@ class BookingsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_costume, only: [:new, :create]
 
+  def index
+    # trying to grab the bookings first, so I can access the related costumes
+    @bookings = current_user.bookings
+  end
+
   def new
     @booking = Booking.new
+    @costume = Costume.find(params[:costume_id])
   end
 
   def create
@@ -16,9 +22,9 @@ class BookingsController < ApplicationController
     Rails.logger.info "Booking Errors: #{@booking.errors.full_messages}"
 
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to users_index_path(@costume)
     else
-      render :new, alert: "Booking failed. Please try again"
+      render :costumes[@costume], alert: "Booking failed. Please try again", status: :unprocessable_entity
     end
   end
 
@@ -29,7 +35,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:user, :costume, :start_date, :end_date)
   end
 
   def set_costume

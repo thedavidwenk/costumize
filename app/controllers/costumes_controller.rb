@@ -12,12 +12,16 @@ class CostumesController < ApplicationController
       @costumes = @costumes.where("name ILIKE ?", "%#{params[:name]}%")
     end
 
-    if params[:category].present?
+    if params[:category].present? && params[:category] != "all"
       @costumes = @costumes.where(category: params[:category])
     end
 
-    if params[:size].present?
+    if params[:size].present? && params[:size] != "all"
       @costumes = @costumes.where(size: params[:size])
+    end
+
+    if params[:available_date].present?
+      @costumes = @costumes.where("available_date >= ?", params[:available_date])
     end
 
     respond_to do |format|
@@ -36,8 +40,10 @@ class CostumesController < ApplicationController
 
   def create
     @costume = Costume.new(costume_params)
+    @costume.user = current_user
+    
     if @costume.save
-      redirect_to root_path
+      redirect_to costume_path(@costume)
     else
       render :new, status: :unprocessable_entity
     end
@@ -46,16 +52,7 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [])
+    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [] )
   end
 
-  private
-
-  # def set_costumes
-  #   @costume = Costume.find(params[:id])
-  # end
-
-  # def costume_params
-  #   params.require(:costume).permit(:name, :category, :size, :description, :price_per_day, photos: [])
-  # end
 end
