@@ -50,6 +50,20 @@ class CostumesController < ApplicationController
     end
   end
 
+  def edit
+    @costume = Costume.find(params[:id])
+  end
+
+  def update
+    @costume = Costume.find(params[:id])
+
+    if @costume.update(costume_params)
+      redirect_to users_index_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @costume = Costume.find(params[:id])
     @costume.destroy!
