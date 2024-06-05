@@ -7,21 +7,27 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
-  def new
-    @booking = Booking.new
-  end
+  # def new
+  #   @booking = Booking.new    <------- not necessary because the form is being displayed in the costume.show page! See costumes_controller#show....
+  # end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.costume = @costume
     @booking.user = current_user
 
-    if @booking.save
-      redirect_to booking_path(@booking)
+
+    if booking_overlap?(@costume.id, @booking.start_date, @booking.end_date)
+      flash.now[:alert] = "The costume is already booked for the selected dates...try again!"
+      render 'costumes/show'
     else
-      render :new, alert: "Booking failed. Please try again", status: :unprocessable_entity
-    end
-  end
+      if @booking.save
+        redirect_to booking_path(@booking), notice: "You have booked this costume, congratulations!"
+      else
+        flash.now[:alert] = "Booking failed, probably a validation error! Please try again"
+        render 'costumes/show'
+      end
+    end   end
 
   def show
     @booking = Booking.find(params[:id])
@@ -35,6 +41,13 @@ class BookingsController < ApplicationController
 
   def set_costume
     @costume = Costume.find(params[:costume_id])
+  end
+
+  def booking_overlap?(costume_id, start_date, end_date)
+    existing_bookings = Booking.where(costume_id: costume_id)
+    existing_bookings.any? do |existing_booking|
+      (existing_booking.start_date < end_date) && (existing_booking.end_date > start_date)
+    end
   end
 
 end

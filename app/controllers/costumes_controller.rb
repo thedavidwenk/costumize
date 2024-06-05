@@ -32,6 +32,7 @@ class CostumesController < ApplicationController
 
   def show
     @costume = Costume.find(params[:id])
+    @booking = Booking.new  # <------ this is to send a booking variable to the booking.new form inside the costume.show page!
   end
 
   def new
