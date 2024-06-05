@@ -38,8 +38,9 @@
             <p class="card-text"><%= @costume.description %></p>
           </div>
           <div class="mt-auto w-100">
-            <%= link_to "Rent this costume", new_costume_booking_path(@costume), class: "btn btn-primary w-100" %>
-            <%# Carmen, copy the attributes from this link to your form submit button! %>
+
+            <%= render "shared/booking_form", costume: @costume %> <%# form to create a new booking, the costume is passed as local variable  %>
+
             <button type="button" class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#confirmation-modal">
               Modal placeholder
             </button>

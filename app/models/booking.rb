@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  # associations 
+  # associations
   belongs_to :user
   belongs_to :costume
 
