@@ -43,7 +43,7 @@
                       <span class="bg-success-subtle p-1 rounded-4"><%= costume.category %></span>
                       <span class="bg-success-subtle p-1 rounded-4"><%= costume.size %></span>
                     </small>
-                  </div>
+<%= link_to "Delete Costume", costume_path(costume), method: :delete, class: "btn btn-outline-danger mx-1", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>                  </div>
                 </div>
               <% end %>
             </div>
