@@ -11,16 +11,16 @@
       <a class="nav-link link-underline link-underline-opacity-0" id="fill-tab-1" data-bs-toggle="tab" href="#fill-tabpanel-1" role="tab" aria-controls="fill-tabpanel-1" aria-selected="false"><i class="fa-regular fa-calendar"></i> My Rentals</a>
     </li>
   </ul>
+
   <div class="tab-content pt-5" id="tab-content">
+    <!-- My Costumes Tab -->
     <div class="tab-pane active" id="fill-tabpanel-0" role="tabpanel" aria-labelledby="fill-tab-0">
-      <%# Rentals %>
       <div class="mx-3">
-        <h2>Your Costumes</h2>
+        <h2>Your Created Costumes</h2>
         <p>These are all costumes you have created for rental</p>
 
         <div class="row" data-controller="card-hover">
-          <% costumes = current_user.costumes %>
-          <% costumes.each do |costume| %>
+          <% @costumes.each do |costume| %>
             <div class="col-md-6 col-lg-4 g-4">
               <%= link_to costume_path(costume), class: "text-decoration-none text-dark" do %>
                 <div class="card h-100 rounded-4" data-action="mouseover->card-hover#addHoverEffect mouseout->card-hover#removeHoverEffect">
@@ -52,10 +52,10 @@
       </div>
     </div>
 
+    <!-- My Rentals Tab -->
     <div class="tab-pane" id="fill-tabpanel-1" role="tabpanel" aria-labelledby="fill-tab-1">
-      <%# Bookings %>
       <div class="mx-3">
-        <h2>My Rentals (as Renter)</h2>
+        <h2>Your Rented Costumes</h2>
         <p>These are all costumes you have rented</p>
 
         <div class="row">
@@ -63,7 +63,7 @@
             <div class="col-md-6 col-lg-4 mb-3">
               <div class="card h-100 rounded-4">
                 <div class="card-body">
-                  <h5 class="card-title fw-bold"> <%= booking.costume.name %></h5>
+                  <h5 class="card-title fw-bold"><%= booking.costume.name %></h5>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">Booking Start Date: <%= booking.start_date.strftime("%d.%m.%y") %></li>
                     <li class="list-group-item">Booking End Date: <%= booking.end_date.strftime("%d.%m.%y") %></li>
@@ -78,6 +78,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
