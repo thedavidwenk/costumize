@@ -9,4 +9,8 @@ class UsersController < ApplicationController
   def set_costumes
     @costumes = Costume.where(user_id: current_user.id)
   end
+  
+  # def set_costumes
+  #   @costumes = current_user.costumes
+  # end
 end
