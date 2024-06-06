@@ -16,9 +16,11 @@
           <h5>Current Photos</h5>
           <% @costume.photos.each do |photo| %>
             <div class="photo">
-              <%= image_tag photo.url, size: "100x100" %>
-              <%= link_to "Remove", remove_photo_costume_path(@costume, photo_id: photo.id), method: :delete, data: { confirm: "Are you sure you want to remove this photo?" } %>
-              <%= f.hidden_field :existing_photos, value: photo.key, multiple: true %> <!-- Hidden field for existing photos -->
+              <%= cl_image_tag photo.key, height: 100, width: 100, crop: "pad" %>
+              <%= link_to "Remove", remove_photo_costume_path(@costume, photo_id: photo.id), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+              <% @costume.photos.each_with_index do |photo, index| %>
+                <%= f.hidden_field "existing_photos[]", value: photo.key, multiple: true %>
+              <% end %>
             </div>
           <% end %>
         </div>

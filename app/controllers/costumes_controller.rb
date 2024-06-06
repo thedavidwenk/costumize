@@ -56,25 +56,22 @@ class CostumesController < ApplicationController
   end
 
   def update
-    if costume_params[:existing_photos].present?
-      @costume.photos.each do |photo|
-        photo.purge unless costume_params[:existing_photos].include?(photo.key)
-      end
-    end
-
     if @costume.update(costume_params.except(:existing_photos))
-      redirect_to @costume, notice: 'Costume was successfully updated.'
+      if costume_params[:existing_photos].present?
+        @costume.photos.attach(params[:photos])
+      end
+      redirect_to users_index_path, notice: 'Costume was successfully updated.'
     else
       render :edit
     end
   end
 
   def remove_photo
-    @costume = Costume.find(params[:id])
     photo = @costume.photos.find(params[:photo_id])
-    photo.purge
+    photo.purge if photo.present?
     redirect_to edit_costume_path(@costume), notice: 'Photo was successfully removed.'
   end
+
 
   def destroy
     @costume = Costume.find(params[:id])
@@ -85,8 +82,9 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, { existing_photos: [] }, photos: [])
+    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [], existing_photos: [])
   end
+
 
   def set_costume
     @costume = Costume.find(params[:id])
