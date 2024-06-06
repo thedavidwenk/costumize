@@ -37,13 +37,10 @@
             </div>
             <p class="card-text"><%= @costume.description %></p>
           </div>
-          <div class="mt-auto w-100">
 
+          <div class="mt-auto w-100">
             <%= render "shared/booking_form", costume: @costume %> <%# form to create a new booking, the costume is passed as local variable  %>
 
-            <button type="button" class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#confirmation-modal">
-              Modal placeholder
-            </button>
             <%= render "shared/modal" %>
           </div>
         </div>

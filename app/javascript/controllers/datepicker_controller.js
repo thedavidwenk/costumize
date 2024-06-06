@@ -8,6 +8,7 @@ export default class extends Controller {
     flatpickr(this.dateRangeTarget, {
       mode: "range",
       dateFormat: "d-m-Y",
+      minDate: "today",
       onChange: this.updateHiddenFields.bind(this),
     });
   }
