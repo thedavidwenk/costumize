@@ -11,7 +11,7 @@ class Costume < ApplicationRecord
   validates :size, inclusion: { in: SIZES }
 
   # associations
-  has_one :booking, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   belongs_to :user
 
   # active storage
