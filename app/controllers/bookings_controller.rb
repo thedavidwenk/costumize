@@ -19,13 +19,16 @@ class BookingsController < ApplicationController
 
     if booking_overlap?(@costume.id, @booking.start_date, @booking.end_date)
       flash.now[:alert] = "The costume is already booked for the selected dates...try again!"
-      render 'costumes/show'
+      render 'costumes/show', status: :unprocessable_entity
+    elsif @booking.start_date < Date.today
+      flash.now[:alert] = "You cannot book a costume for a past date...try again!"
+      render 'costumes/show', status: :unprocessable_entity
     else
       if @booking.save
-        redirect_to booking_path(@booking), notice: "You have booked this costume, congratulations!"
+
       else
         flash.now[:alert] = "Booking failed, probably a validation error! Please try again"
-        render 'costumes/show'
+        render 'costumes/show', status: :unprocessable_entity
       end
     end   end
 
