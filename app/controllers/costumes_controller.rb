@@ -76,8 +76,13 @@ class CostumesController < ApplicationController
 
   def destroy
     @costume = Costume.find(params[:id])
-    @costume.destroy!
-    redirect_to users_index_path, status: :see_other
+
+    if @costume.booking.present?
+      redirect_to users_index_path, alert: 'Cannot delete costume due to open booking.'
+    else
+      @costume.destroy!
+      redirect_to users_index_path, status: :see_other
+    end
   end
 
   private
