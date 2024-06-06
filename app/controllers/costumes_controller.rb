@@ -56,10 +56,11 @@ class CostumesController < ApplicationController
   end
 
   def update
-    if @costume.update(costume_params.except(:existing_photos))
-      if costume_params[:existing_photos].present?
-        @costume.photos.attach(params[:photos])
+    if @costume.update(costume_params.except(:photos, :existing_photos))
+      if costume_params[:photos].present?
+        @costume.photos.attach(costume_params[:photos])
       end
+
       redirect_to users_index_path, notice: 'Costume was successfully updated.'
     else
       render :edit
