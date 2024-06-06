@@ -18,19 +18,17 @@
       <div class="mx-3">
         <h2>Your Created Costumes</h2>
         <p>These are all costumes you have created for rental</p>
-
         <div class="row" data-controller="card-hover">
           <% @costumes.each do |costume| %>
             <div class="col-md-6 col-lg-4 g-4">
-              <%= link_to costume_path(costume), class: "text-decoration-none text-dark" do %>
-                <div class="card h-100 rounded-4" data-action="mouseover->card-hover#addHoverEffect mouseout->card-hover#removeHoverEffect">
+                <div class="card h-100 rounded-4">
                   <div class="image-container">
                     <% if costume.photos.present? %>
                       <%= cl_image_tag costume.photos.first.key, class: "card-img-top", style: "height: 400px; width: 100%; object-fit: cover;" %>
                     <% else %>
                       <%= image_tag 'https://via.placeholder.com/400x300', class: "card-img-top", style: "height: 400px; width: 100%; object-fit: cover;" %>
                     <% end %>
-                    <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5">
+                    <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5 shadow-sm">
                       <%= costume.price_per_day %>€/Day
                     </span>
                   </div>
@@ -40,6 +38,9 @@
                       <p class="card-text"><%= costume.description %></p>
                     </div>
                     <div>
+                      <%= link_to edit_costume_path(costume), class: "link hover-danger-icon mx-1" do %>
+                       <i class="fa-solid fa-pen"></i>
+                      <% end %>
                       <%= link_to costume_path(costume), method: :delete, class: "link hover-danger-icon", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
                         <i class="fas fa-trash-alt"></i>
                       <% end %>
@@ -52,7 +53,7 @@
                     </small>
                    </div>
                 </div>
-              <% end %>
+
             </div>
           <% end %>
         </div>

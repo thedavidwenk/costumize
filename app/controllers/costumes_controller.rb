@@ -1,5 +1,6 @@
 class CostumesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
+  before_action :set_costume, only: [:edit, :update, :remove_photo]
 
   def home
   end
@@ -50,6 +51,29 @@ class CostumesController < ApplicationController
     end
   end
 
+  def edit
+    @costume = Costume.find(params[:id])
+  end
+
+  def update
+    if @costume.update(costume_params.except(:photos, :existing_photos))
+      if costume_params[:photos].present?
+        @costume.photos.attach(costume_params[:photos])
+      end
+
+      redirect_to users_index_path, notice: 'Costume was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def remove_photo
+    photo = @costume.photos.find(params[:photo_id])
+    photo.purge if photo.present?
+    redirect_to edit_costume_path(@costume), notice: 'Photo was successfully removed.'
+  end
+
+
   def destroy
     @costume = Costume.find(params[:id])
     @costume.destroy!
@@ -59,7 +83,11 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [])
+    params.require(:costume).permit(:name, :description, :category, :size, :price_per_day, photos: [], existing_photos: [])
   end
 
+
+  def set_costume
+    @costume = Costume.find(params[:id])
+  end
 end
