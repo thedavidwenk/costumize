@@ -78,7 +78,7 @@ class CostumesController < ApplicationController
     @costume = Costume.find(params[:id])
      
     if @costume.bookings.where(end_date: Date.today..).exists? 
-      redirect_to users_index_path, alert: "You can't delete this costume. You still have open bookings with it."
+      redirect_to users_index_path, alert: "Can't delete this costume. You still have open bookings."
     else
       @costume.destroy!
       redirect_to users_index_path, status: :see_other, notice: "Costume deleted successfully"
