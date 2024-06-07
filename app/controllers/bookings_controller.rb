@@ -30,10 +30,17 @@ class BookingsController < ApplicationController
         flash.now[:alert] = "Booking failed, probably a validation error! Please try again"
         render 'costumes/show', status: :unprocessable_entity
       end
-    end   end
+    end
+  end
 
   def show
     @booking = Booking.find(params[:id])
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to users_index_path, status: :see_other
   end
 
   private
