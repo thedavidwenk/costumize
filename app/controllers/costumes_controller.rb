@@ -21,9 +21,9 @@ class CostumesController < ApplicationController
       @costumes = @costumes.where(size: params[:size])
     end
 
-    if params[:available_date].present?
-      @costumes = @costumes.where("available_date >= ?", params[:available_date])
-    end
+    # if params[:available_date].present?
+    #   @costumes = @costumes.where("available_date >= ?", params[:available_date])
+    # end
 
     respond_to do |format|
       format.html # renders the normal index.html.erb
@@ -76,8 +76,8 @@ class CostumesController < ApplicationController
 
   def destroy
     @costume = Costume.find(params[:id])
-     
-    if @costume.bookings.where(end_date: Date.today..).exists? 
+
+    if @costume.bookings.where(end_date: Date.today..).exists?
       redirect_to users_index_path, alert: "Can't delete this costume. You still have open bookings."
     else
       @costume.destroy!
