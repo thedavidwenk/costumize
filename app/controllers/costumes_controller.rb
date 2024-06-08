@@ -22,9 +22,13 @@ class CostumesController < ApplicationController
       @costumes = @costumes.where(size: params[:size])
     end
 
-    # if params[:available_date].present?
-    #   @costumes = @costumes.where("available_date >= ?", params[:available_date])
-    # end
+    if params[:start_date].present? && params[:end_date].present?
+      start_date = Date.parse(params[:start_date])
+      end_date = Date.parse(params[:end_date])
+      @costumes = @costumes.reject do |costume|
+        booking_overlap?(costume, start_date, end_date)
+      end
+    end
 
     respond_to do |format|
       format.html # renders the normal index.html.erb
@@ -95,5 +99,11 @@ class CostumesController < ApplicationController
 
   def set_costume
     @costume = Costume.find(params[:id])
+  end
+
+  def booking_overlap?(costume, start_date, end_date)
+    costume.bookings.any? do |booking|
+      (booking.start_date < end_date) && (booking.end_date > start_date)
+    end
   end
 end

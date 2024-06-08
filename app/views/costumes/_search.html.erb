@@ -13,11 +13,14 @@
             <%= select_tag :size, options_for_select([["View All", "all"]] + Costume.distinct.pluck(:size), params[:size]), prompt: "Size", class: "form-control", data: { target: 'search.size' } %>
           </div>
           <div class="search-field">
-            <%= date_field_tag :available_date, params[:available_date], placeholder: "Available Date", class: "form-control", data: { target: 'search.availableDate' } %>
+              <div data-controller="datepicker">
+              <%= hidden_field_tag :start_date, '', data: { datepicker_target: "startDate" } %>
+              <%= hidden_field_tag :end_date, '', data: { datepicker_target: "endDate" } %>
+              <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder="Select here your dates...">
+            </div>
           </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-
