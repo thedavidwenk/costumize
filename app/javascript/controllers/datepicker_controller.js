@@ -5,10 +5,14 @@ export default class extends Controller {
   static targets = ["startDate", "endDate", "dateRange"];
 
   connect() {
+    const startDate = this.startDateTarget.value;
+    const endDate = this.endDateTarget.value;
+
     flatpickr(this.dateRangeTarget, {
       mode: "range",
       dateFormat: "d-m-Y",
       minDate: "today",
+      defaultDate: startDate && endDate ? [startDate, endDate] : null,
       onChange: this.updateHiddenFields.bind(this),
     });
   }
