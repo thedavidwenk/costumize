@@ -7,10 +7,10 @@
             <%= text_field_tag :name, params[:name], placeholder: "Key Words", class: "form-control", data: { target: 'search.name' } %>
           </div>
           <div class="search-field">
-            <%= select_tag :category, options_for_select([["View All", "all"]] + Costume.distinct.pluck(:category), params[:category]), prompt: "Costume Category", class: "form-control", data: { target: 'search.category' } %>
+            <%= select_tag :category, options_for_select(Costume.distinct.pluck(:category), params[:category]), prompt: "Costume Category", class: "form-control", data: { target: 'search.category' } %>
           </div>
           <div class="search-field">
-            <%= select_tag :size, options_for_select([["View All", "all"]] + Costume.distinct.pluck(:size), params[:size]), prompt: "Size", class: "form-control", data: { target: 'search.size' } %>
+            <%= select_tag :size, options_for_select(Costume.distinct.pluck(:size), params[:size]), prompt: "Size", class: "form-control", data: { target: 'search.size' } %>
           </div>
           <div class="search-field">
               <div data-controller="datepicker">
