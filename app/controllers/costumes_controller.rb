@@ -10,7 +10,7 @@ class CostumesController < ApplicationController
     @costumes = Costume.all
 
     if params[:name].present?
-      @costumes = @costumes.where("name ILIKE ?", "%#{params[:name]}%")
+      @costumes = @costumes.where("name ILIKE :query OR description ILIKE :query", query: "%#{params[:name]}%")
     end
 
     if params[:category].present? && params[:category] != "all"
@@ -76,8 +76,8 @@ class CostumesController < ApplicationController
 
   def destroy
     @costume = Costume.find(params[:id])
-     
-    if @costume.bookings.where(end_date: Date.today..).exists? 
+
+    if @costume.bookings.where(end_date: Date.today..).exists?
       redirect_to users_index_path, alert: "Can't delete this costume. You still have open bookings."
     else
       @costume.destroy!
