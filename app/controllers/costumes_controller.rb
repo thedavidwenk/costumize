@@ -10,7 +10,8 @@ class CostumesController < ApplicationController
     @costumes = Costume.all
 
     if params[:name].present?
-      @costumes = @costumes.where("name ILIKE :query OR description ILIKE :query", query: "%#{params[:name]}%")
+      sql_query = "name ILIKE :query OR description ILIKE :query"
+      @costumes = @costumes.where(sql_query, query: "%#{params[:name]}%")
     end
 
     if params[:category].present? && params[:category] != "all"
