@@ -1,21 +1,25 @@
 <div>
   <%= form_with url: costumes_path, method: :get, local: true, data: { action: 'input->search#search' } do %>
     <div class="row my-5">
-      <div class="col-md-4 mr-3">
-        <%= label_tag :name, "Key Words" %>
-        <%= text_field_tag :name, params[:name], placeholder: "What are you looking for?", class: "form-control", data: { target: 'search.name' } %>
-      </div>
-      <div class="col mr-3">
-        <%= label_tag :category, "Costume Category" %>
-        <%= select_tag :category, options_for_select([["View All", "all"]] + Costume.distinct.pluck(:category), params[:category]), prompt: "Select a category", class: "form-control", data: { target: 'search.category' } %>
-      </div>
-      <div class="col mr-3">
-        <%= label_tag :size, "Size" %>
-        <%= select_tag :size, options_for_select([["View All", "all"]] + Costume.distinct.pluck(:size), params[:size]), prompt: "Select a size", class: "form-control", data: { target: 'search.size' } %>
-      </div>
-      <div class="col mr-3">
-        <%= label_tag :available_date, "Available Date" %>
-        <%= date_field_tag :available_date, params[:available_date], class: "form-control", data: { target: 'search.availableDate' } %>
+      <div class="col">
+        <div class="search-bar-container">
+          <div class="search-field">
+            <%= text_field_tag :name, params[:name], placeholder: "Key Words", class: "form-control", data: { target: 'search.name' } %>
+          </div>
+          <div class="search-field">
+            <%= select_tag :category, options_for_select(Costume.distinct.pluck(:category), params[:category]), prompt: "Costume Category", class: "form-control", data: { target: 'search.category' } %>
+          </div>
+          <div class="search-field">
+            <%= select_tag :size, options_for_select(Costume.distinct.pluck(:size), params[:size]), prompt: "Size", class: "form-control", data: { target: 'search.size' } %>
+          </div>
+          <div class="search-field">
+              <div data-controller="datepicker">
+              <%= hidden_field_tag :start_date, '', data: { datepicker_target: "startDate" } %>
+              <%= hidden_field_tag :end_date, '', data: { datepicker_target: "endDate" } %>
+              <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder="Select here your dates...">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
