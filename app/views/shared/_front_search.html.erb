@@ -12,7 +12,7 @@
           <div class="search-field">
             <%= select_tag :size, options_for_select(Costume.distinct.pluck(:size), params[:size]), prompt: "Size", class: "form-control", style: "width: 100%; border: none; box-shadow: none; padding-left: 10px; padding-right: 10px;" %>
           </div>
-          <div class="search-field">
+          <div class="date-picker">
             <div data-controller="datepicker">
               <%= hidden_field_tag :start_date, '', data: { datepicker_target: "startDate" } %>
               <%= hidden_field_tag :end_date, '', data: { datepicker_target: "endDate" } %>

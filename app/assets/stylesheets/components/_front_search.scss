@@ -31,6 +31,20 @@
   }
 }
 
+.date-picker {
+  flex: 1;
+  padding: 10px;
+  position: relative;
+
+  .form-control {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 .search-button {
   flex: none;
   display:flex;
