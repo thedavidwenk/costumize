@@ -12,13 +12,15 @@
 
   .nav-link {
 
+    color: #000;
+
     &:hover {
       color: $purple;
       text-decoration: underline;
     }
 
     &.active {
-      color: $purple !important; 
+      color: $purple !important;
       text-decoration: underline;
     }
   }
