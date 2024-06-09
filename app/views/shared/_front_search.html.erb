@@ -1,0 +1,31 @@
+<div>
+  <%= form_with url: costumes_path, method: :get, local: true do %>
+    <div class="row my-5">
+      <div class="col">
+        <div class="search-bar-container">
+          <div class="search-field">
+            <%= text_field_tag :name, params[:name], placeholder: "Key Words", class: "form-control", style: "width: 100%; border: none; box-shadow: none; padding-left: 10px; padding-right: 10px;" %>
+          </div>
+          <div class="search-field">
+            <%= select_tag :category, options_for_select(Costume.distinct.pluck(:category), params[:category]), prompt: "Costume Category", class: "form-control", style: "width: 100%; border: none; box-shadow: none; padding-left: 10px; padding-right: 10px;" %>
+          </div>
+          <div class="search-field">
+            <%= select_tag :size, options_for_select(Costume.distinct.pluck(:size), params[:size]), prompt: "Size", class: "form-control", style: "width: 100%; border: none; box-shadow: none; padding-left: 10px; padding-right: 10px;" %>
+          </div>
+          <div class="search-field">
+            <div data-controller="datepicker">
+              <%= hidden_field_tag :start_date, '', data: { datepicker_target: "startDate" } %>
+              <%= hidden_field_tag :end_date, '', data: { datepicker_target: "endDate" } %>
+              <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder="Select here your dates..." style="width: 100%; border: none; box-shadow: none; padding-left: 10px; padding-right: 10px;">
+            </div>
+          </div>
+          <div class="search-button">
+            <button type="submit" style="border: none; background: none; padding: 0;">
+              <i class="fa fa-search" style="font-size: 12px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
