@@ -87,36 +87,37 @@
     </div>
 
     <!----------- My Rentals Tab ------------->
-    <div class="tab-pane active" id="fill-tabpanel-0" role="tabpanel" aria-labelledby="fill-tab-0">
-      <div class="mx-3">
-        <h2>Your Rented Costumes</h2>
-        <p>These are all the costumes that you have rented</p>
-        <div class="row mt-5">
-          <% @bookings.each do |booking| %>
-            <div class="col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 rounded-4">
-                <%# -------------- Card text body ------------------- %>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <div>
-                     <h5 class="card-title fw-bold"><%= link_to booking.costume.name, costume_path(booking.costume), class: "text-decoration-none" %></h5>
-                    </div>
-                    <div>
-                      <%= link_to booking_path(booking), method: :delete, class: "link hover-danger-icon", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                        <i class="fas fa-trash-alt"></i>
-                      <% end %>
-                    </div>
-                  </div>
-                  <ul class="list-group list-group-flush mt-3">
-                    <li class="list-group-item">Booking Period: <%= booking.start_date.strftime("%d.%m.%y") %> - <%= booking.end_date.strftime("%d.%m.%y") %></li>
-                    <li class="list-group-item">Rented from:  <%= booking.user.first_name %> <%= booking.user.last_name %></li>
-                  </ul>
+<div class="tab-pane active" id="fill-tabpanel-0" role="tabpanel" aria-labelledby="fill-tab-0">
+  <div class="mx-3">
+    <h2>Your Rented Costumes</h2>
+    <p>These are all the costumes that you have rented</p>
+    <div class="row mt-5">
+      <% @bookings.each do |booking| %>
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="card h-100 rounded-4 custom-card-bg">
+            <%# -------------- Card text body ------------------- %>
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <h5 class="card-title fw-bold"><%= link_to booking.costume.name, costume_path(booking.costume), class: "text-decoration-none" %></h5>
+                </div>
+                <div>
+                  <%= link_to booking_path(booking), method: :delete, class: "link hover-danger-icon", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
                 </div>
               </div>
+                <ul class="list-group list-group-flush mt-3 ">
+                  <li class="list-group-item">Booking Period: <%= booking.start_date.strftime("%d.%m.%y") %> - <%= booking.end_date.strftime("%d.%m.%y") %></li>
+                  <li class="list-group-item">Rented from:  <%= booking.user.first_name %> <%= booking.user.last_name %></li>
+                </ul>
+              </div>
             </div>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
+  </div>
+</div>
   </div>
 </div>
