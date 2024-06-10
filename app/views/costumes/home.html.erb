@@ -1,14 +1,16 @@
-<div class="search-bar container" style="margin-top: 70px;">
+<div class="banner d-flex flex-column justify-content-evenly" style="background-image: url(<%= asset_path('background.png') %>);">
+
+<div class="search-bar container">
   <%= render 'shared/front_search' %>
 </div>
 
-<div class="banner" style="background-image: , url(<%= asset_path('') %>);">
-  <div class="container">
+  <div class="container d-flex justify-content-center align-items-center flex-column w-50">
 
     <span data-controller="typed">
-      <h1 data-typed-target="element"></h1>
+      <h1 data-typed-target="element" class="text-center"></h1>
     </span>
     <p>Discover and Share Costumes with Our Creative Community.</p>
     <%= link_to "Book a Costume", costumes_path, class: "btn btn-primary" %>
   </div>
+
 </div>
