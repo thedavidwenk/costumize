@@ -12,7 +12,7 @@ export default class extends Controller {
     new Typed(this.elementTarget, {
       strings: [
         "Need a costume?",
-        "Need a costume? Find the perfect one or share your own with Costumize 🥳",
+        "Need a costume? Find the perfect one or share your own with Costumize 🥳"
       ],
       typeSpeed: 20,
       backSpeed: 55,
