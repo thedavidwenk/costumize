@@ -14,9 +14,9 @@
           </div>
           <div class="search-field">
               <div data-controller="datepicker">
-              <%= hidden_field_tag :start_date, '', data: { datepicker_target: "startDate" } %>
-              <%= hidden_field_tag :end_date, '', data: { datepicker_target: "endDate" } %>
-              <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder="Select here your dates...">
+              <%= hidden_field_tag :start_date, @start_date, data: { datepicker_target: "startDate" } %>
+              <%= hidden_field_tag :end_date, @end_date, data: { datepicker_target: "endDate" } %>
+              <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder="Select here your dates..." value="<%= @start_date && @end_date ? "#{@start_date} to #{@end_date}" : "" %>">
             </div>
           </div>
         </div>

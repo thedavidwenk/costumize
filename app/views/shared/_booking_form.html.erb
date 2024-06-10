@@ -1,17 +1,11 @@
-  <%= simple_form_for([@costume, @booking]) do |f| %>
+<%= simple_form_for([@costume, @booking]) do |f| %>
+  <div data-controller="datepicker">
+    <%= f.input :start_date, as: :hidden, input_html: { value: @start_date, data: { datepicker_target: "startDate" } } %>
+    <%= f.input :end_date, as: :hidden, input_html: { value: @end_date, data: { datepicker_target: "endDate" } } %>
 
-    <div data-controller="datepicker">
-
-      <%= f.input :start_date, as: :hidden, input_html: { value: @start_date, data: { datepicker_target: "startDate" } } %>
-      <%= f.input :end_date, as: :hidden, input_html: { value: @end_date, data: { datepicker_target: "endDate" } } %>
-
-      <div class="form-group mb-5">
-        <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder= "Select here your dates..." value="<%= @start_date && @end_date ? "#{@start_date} to #{@end_date}" : "" %>" >
-      </div>
-
+    <div class="form-group mb-5">
+      <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder="Select here your dates..." value="<%= @start_date && @end_date ? "#{@start_date} to #{@end_date}" : "" %>">
     </div>
-
-    <%= f.submit "Book Now", class: "btn btn-primary w-100", data: { bs_toggle: "modal", bs_target: "#confirmation-modal" } %>
-
-
-  <% end %>
+  </div>
+  <%= f.submit "Book Now", class: "btn btn-primary w-100", data: { bs_toggle: "modal", bs_target: "#confirmation-modal" } %>
+<% end %>
