@@ -36,7 +36,9 @@
           <div class="card-body px-0">
             <div class="d-flex justify-content-between align-items-center">
               <h4 class="card-title fw-bold"><%= costume.name %></h4>
-              <h5 class=" p-1 rounded-4"><i class="fa-solid fa-shirt"></i> <strong><%= costume.size %></strong></h5>
+              <div class="d-flex justify-content-between align-items-center"> 
+                <h5><strong><%= costume.size %></strong></h5><h5 class=" p-1 rounded-4"><i class="fa-solid fa-shirt"></i> </h5>
+              </div>
             </div>
             <h5 class="card-text"><%= costume.price_per_day %> €/Day</h5> 
           </div>
