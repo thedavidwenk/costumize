@@ -8,6 +8,8 @@ class CostumesController < ApplicationController
   def index
     @costume = Costume.new
     @costumes = Costume.all
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
 
     if params[:name].present?
       sql_query = "name ILIKE :query OR description ILIKE :query"

@@ -3,7 +3,7 @@
     <h1 class="text-center">Find your costume</h1>
   </div>
 
-  <%= render 'costumes/search' %>
+  <%= render 'costumes/search', start_date: @start_date, end_date: @end_date %>
 
   <div data-search-target="results" class="mb-5">
     <%= render 'costumes/results', costumes: @costumes %>
