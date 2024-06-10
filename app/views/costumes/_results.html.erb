@@ -1,11 +1,31 @@
 <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
   <% @costumes.each do |costume| %>
-    <div class="col mb-3">
+    <div class="col mb-4">
       <%= link_to costume_path(costume), start_date: params[:start_date], end_date: params[:end_date], class: "text-decoration-none text-dark" do %><!-- This makes the entire card clickable, there is an end of the loop at the bottom -->
         <div class="card h-100 border-0">
-          <div class="image-container">
+          <div class="image-container position-relative">
             <% if costume.photos.present? %>
-              <%= cl_image_tag costume.photos.first.key, class: "card-img-top rounded-5 border border-2 border-light", style: "height: 400px; width: 100%; object-fit: cover;" %>
+              <% if costume.photos.count > 1 %>
+                <div id="carousel<%= costume.id %>" class="carousel slide">
+                  <div class="carousel-inner">
+                    <% costume.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= 'active' if index == 0 %>">
+                        <%= cl_image_tag photo.key, class: "d-block w-100 rounded-5 border border-2 border-light", style: "height: 400px; width: 100%; object-fit: cover;" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <button class="carousel-control-prev custom-carousel-control-prev" type="button" data-bs-target="#carousel<%= costume.id %>" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon custom-carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next custom-carousel-control-next" type="button" data-bs-target="#carousel<%= costume.id %>" data-bs-slide="next">
+                    <span class="carousel-control-next-icon custom-carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              <% else %>
+                <%= cl_image_tag costume.photos.first.key, class: "card-img-top rounded-5 border border-2 border-light", style: "height: 400px; width: 100%; object-fit: cover;" %>
+              <% end %>
             <% else %>
               <%= image_tag 'https://via.placeholder.com/400x300', class: "card-img-top rounded-5 border border-2 border-light", style: "height: 400px; width: 100%; object-fit: cover;" %>
             <% end %>
@@ -13,7 +33,7 @@
               <%= rand(4.0..5).round(1) %> <i class="fa-solid fa-star rating-star"></i>
             </span>
           </div>
-          <div class="card-body">
+          <div class="card-body px-0">
             <div class="d-flex justify-content-between align-items-center">
               <h4 class="card-title fw-bold"><%= costume.name %></h4>
               <h5 class=" p-1 rounded-4"><i class="fa-solid fa-shirt"></i> <strong><%= costume.size %></strong></h5>
