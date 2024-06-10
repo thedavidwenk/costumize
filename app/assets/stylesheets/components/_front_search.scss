@@ -31,15 +31,32 @@
   }
 }
 
+.date-picker {
+  flex: 1;
+  padding: 10px;
+  position: relative;
+
+  .form-control {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 .search-button {
   flex: none;
-  display: flex;
+  display:flex;
+  width: 35px;
+  height: 35px;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 3px;
   border: none;
-  background-color: white;
+  background-color: $purple;
   border-radius: 50%;
+  margin: 10px;
   cursor: pointer;
 }
 
