@@ -10,8 +10,11 @@
       </div>
 
     </div>
-
-    <%= f.submit "Book Now", class: "btn btn-primary w-100", data: { bs_toggle: "modal", bs_target: "#confirmation-modal" } %>
+    <% if user_signed_in? %>
+      <%= f.submit "Book Now", class: "btn btn-primary w-100", data: { bs_toggle: "modal", bs_target: "#confirmation-modal" } %>
+    <% elsif %>
+      <%= f.submit "Book Now", class: "btn btn-primary w-100", data: { bs_toggle: "modal", bs_target: "#confirmation-modal" } %>
+    <% end %>
 
 
   <% end %>
