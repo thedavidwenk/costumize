@@ -1,18 +1,20 @@
-<div class="container my-5">
-  <div class="row d-flex justify-content-center">
-    <div class="col-5">
-      <%= link_to "Back To Results", costumes_path %>
-      <h1>Create a new costume</h1>
-      <p>Please fill out all the columns and upload photos.</p>
-      <%= simple_form_for(@costume) do |f|  %>
-        <%= f.input :name, autofocus: true, required: true %>
-        <%= f.input :description, as: :text, required: true %>
-        <%= f.input :category, collection: Costume::CATEGORIES, required: true %>
-        <%= f.input :size, collection: Costume::SIZES, required: true %>
-        <%= f.input :price_per_day, as: :integer, input_html: { min: 0 }, required: true %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true }, required: true %>
-        <%= f.submit %>
-      <% end %>
+<div class="" style="height:780px;">
+  <div class="container my-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-5">
+        <%= link_to "Back To Results", costumes_path %>
+        <h1>Create a new costume</h1>
+        <p>Please fill out all the columns and upload photos.</p>
+        <%= simple_form_for(@costume) do |f|  %>
+          <%= f.input :name, autofocus: true, required: true %>
+          <%= f.input :description, as: :text, required: true %>
+          <%= f.input :category, collection: Costume::CATEGORIES, required: true %>
+          <%= f.input :size, collection: Costume::SIZES, required: true %>
+          <%= f.input :price_per_day, as: :integer, input_html: { min: 0 }, required: true %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, required: true %>
+          <%= f.submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
