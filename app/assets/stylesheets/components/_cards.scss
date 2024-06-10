@@ -1,0 +1,37 @@
+
+.card-body {
+  h3, h4, h5, h6 {
+    font-family: $body-font;
+  }
+}
+
+.custom-carousel-control-prev,
+.custom-carousel-control-next {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.custom-carousel-control-prev {
+  left: 10px;
+}
+
+.custom-carousel-control-next {
+  right: 10px;
+}
+
+.custom-carousel-control-prev-icon,
+.custom-carousel-control-next-icon {
+  filter: invert(0) sepia(0) saturate(0) hue-rotate(0deg) brightness(0) contrast(1);
+}
+
+.rating-star {
+  color: $purple;
+}
