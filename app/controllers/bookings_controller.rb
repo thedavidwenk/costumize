@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     # This checks if the user has introduced dates in the booking calendar -----------------------
-
     unless booking_params[:start_date].present? && booking_params[:end_date].present?
       flash.now[:alert] = "Please confirm your rental dates."
       render 'costumes/show', status: :unprocessable_entity
