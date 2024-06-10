@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user!
+  # skip_before_action :authenticate_user!
   before_action :set_costume, only: [:new, :create]
 
   def index
@@ -16,6 +16,11 @@ class BookingsController < ApplicationController
     @booking.costume = @costume
     @booking.user = current_user
 
+    unless booking_params[:start_date].present? && booking_params[:end_date].present?
+      flash.now[:alert] = "Please confirm your rental dates."
+      render 'costumes/show', status: :unprocessable_entity
+      return
+    end
 
     if booking_overlap?(@costume.id, @booking.start_date, @booking.end_date)
       flash.now[:alert] = "The costume is already booked for the selected dates...try again!"
