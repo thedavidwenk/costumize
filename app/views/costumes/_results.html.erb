@@ -1,29 +1,53 @@
-<div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-xs-1" data-controller="card-hover">
+<div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
   <% @costumes.each do |costume| %>
-    <div class="col mb-3">
-      <%= link_to costume_path(costume), start_date: params[:start_date], end_date: params[:end_date], class: "text-decoration-none text-dark" do %><!-- This makes the entire card clickable, there is an end of the loop at the bottom -->
-        <div class="card h-100 rounded-4" data-action="mouseover->card-hover#addHoverEffect mouseout->card-hover#removeHoverEffect">
-          <div class="image-container">
+    <div class="col mb-4">
+      <%= link_to costume_path(costume, start_date: @start_date, end_date: @end_date), start_date: params[:start_date], end_date: params[:end_date], class: "text-decoration-none text-dark" do %>
+        <div class="card h-100 border-0">
+          <div class="image-container position-relative">
             <% if costume.photos.present? %>
-              <%= cl_image_tag costume.photos.first.key, class: "card-img-top", style: "height: 400px; width: 100%; object-fit: cover;" %>
+              <% if costume.photos.count > 1 %>
+                <div id="carousel<%= costume.id %>" class="carousel slide">
+                  <div class="carousel-inner">
+                    <% costume.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= 'active' if index == 0 %>">
+                        <%= cl_image_tag photo.key, class: "d-block w-100 rounded-5 border border-2 border-light", style: "height: 400px; width: 100%; object-fit: cover;" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <button class="carousel-control-prev custom-carousel-control-prev" type="button" data-bs-target="#carousel<%= costume.id %>" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon custom-carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next custom-carousel-control-next" type="button" data-bs-target="#carousel<%= costume.id %>" data-bs-slide="next">
+                    <span class="carousel-control-next-icon custom-carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              <% else %>
+                <%= cl_image_tag costume.photos.first.key, class: "card-img-top rounded-5 border border-2 border-light", style: "height: 400px; width: 100%; object-fit: cover;" %>
+              <% end %>
             <% else %>
-              <%= image_tag 'https://via.placeholder.com/400x300', class: "card-img-top", style: "height: 400px; width: 100%; object-fit: cover;" %>
+              <%= image_tag 'https://via.placeholder.com/400x300', class: "card-img-top rounded-5 border border-2 border-light", style: "height: 400px; width: 100%; object-fit: cover;" %>
             <% end %>
             <span class="position-absolute top-0 end-0 badge rounded-pill text-bg-secondary fw-medium bg-white text-dark m-3 p-3 fs-5 shadow-sm">
-              <%= costume.price_per_day %>€/Day
+              <%= rand(4.0..5).round(1) %> <i class="fa-solid fa-star rating-star"></i>
             </span>
           </div>
-          <div class="card-body">
-            <h5 class="card-title fw-bold"><%= costume.name %></h5>
-            <p class="card-text"><%= costume.description %></p>
+            <div class="card-body px-0">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4 class="card-title fw-bold mb-0"><%= costume.name %></h4>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-1">
+                <div class="d-flex align-items-center">
+                  <h5 class="mb-0"><strong><%= costume.size %></strong></h5>
+                  <h5 class="p-1 mb-0"><i class="fa-solid fa-shirt"></i></h5>
+                </div>
+                <div class="d-flex align-items-center">
+                  <h5 class="card-text mt-1"><%= costume.price_per_day %> €/Day</h5>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-body-secondary">
-              <span class="bg-success-subtle p-1 rounded-4"><%= costume.category %></span>
-              <span class="bg-success-subtle p-1 rounded-4"><%= costume.size %></span>
-            </small>
-          </div>
-        </div>
       <% end %>
     </div>
   <% end %>
