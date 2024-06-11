@@ -5,7 +5,7 @@
 
     <div class="form-group mb-5">
       <input type="text" data-datepicker-target="dateRange" class="form-control" placeholder="Select here your dates..." value="<%= @start_date && @end_date ? "#{@start_date} to #{@end_date}" : "" %>">
+      <%= f.submit "Book Now", class: "booking-button btn btn-primary btn-lg w-100 mt-3 booking-button", data: { bs_toggle: "modal", bs_target: "#confirmation-modal" } %>
     </div>
   </div>
-  <%= f.submit "Book Now", class: "btn btn-primary w-100", data: { bs_toggle: "modal", bs_target: "#confirmation-modal" } %>
 <% end %>

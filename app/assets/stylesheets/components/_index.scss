@@ -3,7 +3,8 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
-
+@import "small_pictures";
+@import "booking_button";
 
 .hover-danger-icon {
   color: black;
@@ -15,17 +16,17 @@
 }
 
 .link i {
-    border: none;
-    outline: none;
-    text-decoration: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
 }
 
 .link i.fa-pen {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .link:hover i {
-    border: none;
-    outline: none;
-    text-decoration: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
 }
