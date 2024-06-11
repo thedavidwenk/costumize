@@ -1,4 +1,4 @@
-<div class="banner d-flex flex-column justify-content-evenly h-100 gap-5" style="background-image: url(<%= asset_path('background.png') %>)">
+<div class="banner d-flex flex-column justify-content-evenly h-100 gap-5 align-items-center" style="background-image: url(<%= asset_path('background.png') %>)">
 
   <div class="search-bar container mt-5">
     <%= render 'shared/front_search' %>
@@ -9,20 +9,19 @@
         <h1 data-typed-target="element" class="text-center"></h1>
       </span>
       <p>Discover and Share Costumes with Our Creative Community.</p>
-      <%= link_to "Book a Costume", costumes_path, class: "btn btn-primary" %>
+      <%= link_to "Book a Costume", costumes_path, class: "btn btn-primary text-white" %>
     </div>
 
-      <div class="container row mb-5">
-        <div class="col mt-5">
-          <%= image_tag "home_pic1.jpg", class: "img-thumbnail rounded-5 shadow" %>
-        </div>
-        <div class="col">
-          <%= image_tag "home_pic2.jpg", class: "img-thumbnail rounded-5 shadow" %>
-        </div>
-        <div class="col mt-5">
-          <%= image_tag "home_pic3.jpg", class: "img-thumbnail rounded-5 shadow" %>
-        </div>
-
+    <div class="container row mb-5">
+      <div class="col mt-5">
+        <%= image_tag "home_pic1.jpg", class: "img-thumbnail rounded-5 shadow" %>
       </div>
+      <div class="col">
+        <%= image_tag "home_pic2.jpg", class: "img-thumbnail rounded-5 shadow" %>
+      </div>
+      <div class="col mt-5">
+        <%= image_tag "home_pic3.jpg", class: "img-thumbnail rounded-5 shadow" %>
+      </div>
+    </div>
 
 </div>
