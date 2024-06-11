@@ -1,24 +1,24 @@
 <div class="modal" id="confirmation-modal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content modal-size">
         <div class="modal-header border-0">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-center">
+        <div class="modal-body d-flex justify-content-center aligin-items-center text-center modal-size">
 
           <div class="d-flex flex-column justify-content-evenly">
-            <div class="d-flex gap-3">
-            <img width="64" height="64" src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/530077/external-costume-carnival-icongeek26-outline-icongeek26.png" alt="external-costume-carnival-icongeek26-outline-icongeek26"/>
+            <div class="gap-3 text-align-center">
+            <span id="big-emoji">🥳</span class="big-emoji">
             <h2>Congratulations</h2>
             </div>
             <h5>You've rented a <%= @costume.name %>!</h5>
+          <a href="<%= users_index_path %>"><button type="button" class="btn btn-primary text-white booking-button">See Overview</button></a>
 
           </div>
 
         </div>
         <div class="modal-footer border-0 d-flex justify-content-center">
-          <a href="<%= users_index_path %>"><button type="button" class="btn btn-primary">See Overview</button></a>
         </div>
       </div>
     </div>
