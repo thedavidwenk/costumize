@@ -1,27 +1,29 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  border-bottom: 2px solid black;
 
   .navbar-collapse {
     flex-grow: 0;
-  }
-
-  .navbar-brand img {
-    width: 150px;
-  }
-
-  .nav-link {
-
-    color: #000;
-
-    &:hover {
-      color: $purple;
-      text-decoration: underline;
     }
 
-    &.active {
-      color: $purple !important;
-      text-decoration: underline;
-    }
-  }
+    .navbar-brand img {
+      width: 150px;
+      }
+
+      .nav-link {
+
+        color: #000;
+
+        &:hover {
+          color: $purple;
+          text-decoration: underline;
+          }
+
+          &.active {
+            color: $purple !important;
+            text-decoration: underline;
+            }
+            }
 }
+
