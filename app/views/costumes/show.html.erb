@@ -7,7 +7,7 @@
         <div class="row equal-height-row my-5 d-flex">
 
           <!---------------- part I: column of 3 square pictures --------------->
-          <div class="col-md-2 d-flex flex-column align-items-center gap-2 p-0">
+          <div class="col-md-2 d-flex flex-column align-items-center gap-3 p-0">
             <% @costume.photos.first(3).each_with_index do |photo, index| %>
               <div class="photo-container">
                 <%= cl_image_tag photo.key, class: "rounded-5 img-fluid", data: { action: "click->image-switcher#changeImage", image_url: cl_image_path(photo.key), image_alt: @costume.name, image_switcher_target: "thumbnail" } %>
@@ -26,9 +26,10 @@
               <div>
                 <div>
                   <h3 class="card-title fw-semibold pt-0 fs-4"><%= @costume.name %></h3>
-                  <div class="d-flex justify-content-between">
-                    <h5 class="p-1 mt-3 rounded-4"><i class="fa-solid fa-shirt"></i> <strong><%= @costume.size %></strong></h5>
-                    <p class="card-text pt-4 fw-lighter">Offered by: <%= @costume.user.first_name %> <%= @costume.user.last_name %></p>
+                  <div>
+                    <p class="p-1 mt-2 rounded-4"><i class="fa-solid fa-shirt"></i> <strong><%= @costume.size %></strong></p>
+                    <strong><p class="mb-0 mt-5">Offered by: </p></strong>
+                    <p class="mt-0"><%= @costume.user.first_name %> <%= @costume.user.last_name %></p>
                   </div>
                 </div>
                 <div>
@@ -40,7 +41,7 @@
               <div class="mt-5 w-100">
                 <div class="pb-0">
                   <div class="mt-5">
-                    <h4 class="border-bottom border-3 border-black pb-2 fw-semibold fs-3 mb-5"><%= @costume.price_per_day %> €/day</h4>
+                    <h4 class="border-bottom border-3 border-black pb-2 fw-semibold fs-4 mb-5"><%= @costume.price_per_day %> €/day</h4>
                     <% if @costume.user.present? %>
                     <% end %>
                   </div>
