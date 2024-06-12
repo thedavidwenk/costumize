@@ -3,6 +3,9 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+@import "small_pictures";
+@import "booking_button";
+@import "show_column";
 
 
 .hover-danger-icon {
@@ -28,4 +31,13 @@
     border: none;
     outline: none;
     text-decoration: none;
+}
+
+#big-emoji {
+  font-size: 3rem;
+}
+
+.modal-size {
+  height: 400px;
+  width: 400px;
 }
