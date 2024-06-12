@@ -1,6 +1,6 @@
 <div class="container mt-4" data-controller="image-switcher">
-  <%= link_to "Back To Overview", costumes_path, class: "link-offset-2 pt-3" %>
   <% if @costume.photos.present? && @costume.photos.size > 1 %>
+  <%= link_to "Back To Overview", costumes_path, class: "link-offset-2 pt-3" %>
     <div class="my-5 d-flex" style="max-height: 680px;">
       <div class="col-md-2 d-flex flex-column align-items-center gap-3">
         <% @costume.photos.first(3).each_with_index do |photo, index| %>
@@ -46,9 +46,10 @@
     </div>
   <% else %>
     <!-- If there are no photos or only one photo, display the large photo and product info -->
-    <div class="row my-5 equal-height-row">
+    <%= link_to "Back To Overview", costumes_path, class: "link-offset-2 pt-3" %>
+    <div class="my-5 d-flex justify-content-center">
       <!------------------ part II: large middle picture ------------------->
-      <div class="col-6 mx-auto position-relative" style="width: 500px;">
+      <div class="mx-3 position-relative" style="width: 500px;">
         <% if @costume.photos.present? %>
           <%= cl_image_tag @costume.photos.first.key, class: "w-100 h-100 rounded-5", style: "object-fit: cover;", alt: @costume.name, data: { image_switcher_target: "mainImage" } %>
         <% else %>
@@ -60,8 +61,8 @@
       </div>
 
       <!------------------ part III: text and booking button ------------------>
-      <div class="col border border-3 border-black bg-white rounded-5 p-4">
-        <div class="card-body d-flex h-100 flex-column justify-content-between">
+      <div class="col-5 border border-3 border-black bg-white rounded-5 p-4">
+        <div class="card-body d-flex h-100 flex-column justify-content-between" style="width: 500px">
           <div>
             <div>
               <h3 class="card-title fw-semibold pt-0 fs-4"><%= @costume.name %></h3>
