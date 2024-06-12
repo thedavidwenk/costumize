@@ -83,8 +83,6 @@
             <div class="pb-0">
               <div class="mt-5">
                 <h4 class="border-bottom border-3 border-black pb-2 fw-semibold fs-4 mb-5"><%= @costume.price_per_day %> €/day</h4>
-                <% if @costume.user.present? %>
-                <% end %>
               </div>
               <%= render "shared/booking_form", costume: @costume, start_date: @start_date, end_date: @end_date, class: "pb-5" %>
             </div>
