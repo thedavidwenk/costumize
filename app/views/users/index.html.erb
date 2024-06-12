@@ -5,11 +5,11 @@
 
   <ul class="nav nav-tabs justify-content-start" role="tablist">
     <li class="nav-item" role="presentation">
-      <a class="nav-link link-underline link-underline-opacity-0" id="fill-tab-1" data-bs-toggle="tab" href="#fill-tabpanel-1" role="tab" aria-controls="fill-tabpanel-1" aria-selected="false"><i class="fa-regular fa-calendar"></i> My Costumes</a>
+      <a class="nav-link active link-underline link-underline-opacity-0" id="fill-tab-0" data-bs-toggle="tab" href="#fill-tabpanel-0" role="tab" aria-controls="fill-tabpanel-0" aria-selected="true"><i class="fa-regular fa-calendar"></i> My Rentals</a>
     </li>
 
     <li class="nav-item" role="presentation">
-      <a class="nav-link active link-underline link-underline-opacity-0" id="fill-tab-0" data-bs-toggle="tab" href="#fill-tabpanel-0" role="tab" aria-controls="fill-tabpanel-0" aria-selected="true"><i class="fa-solid fa-shirt"></i> My Rentals</a>
+      <a class="nav-link link-underline link-underline-opacity-0" id="fill-tab-1" data-bs-toggle="tab" href="#fill-tabpanel-1" role="tab" aria-controls="fill-tabpanel-1" aria-selected="false"><i class="fa-solid fa-shirt"></i> My Costumes</a>
     </li>
   </ul>
 
@@ -86,7 +86,7 @@
       </div>
     </div>
 
- <!----------- My Rentals Tab ------------->
+<!----------- My Rentals Tab ------------->
     <div class="tab-pane active" id="fill-tabpanel-0" role="tabpanel" aria-labelledby="fill-tab-0">
       <div class="mx-3">
         <h2>Your Rented Costumes</h2>
@@ -99,7 +99,7 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between ">
                     <div>
-                     <h5 class="card-title fw-bold"><%= link_to booking.costume.name, costume_path(booking.costume), class: "text-decoration-none" %></h5>
+                      <h5 class="card-title fw-bold"><%= link_to booking.costume.name, costume_path(booking.costume), class: "text-decoration-none" %></h5>
                     </div>
                     <div>
                       <%= link_to booking_path(booking), method: :delete, class: "link hover-danger-icon", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
