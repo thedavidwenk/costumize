@@ -47,7 +47,7 @@
   <% else %>
     <!-- If there are no photos or only one photo, display the large photo and product info -->
     <%= link_to "Back To Overview", costumes_path, class: "link-offset-2 pt-3" %>
-    <div class="my-5 d-flex justify-content-center">
+    <div class="my-5 d-flex justify-content-center", style="max-height: 680px;">
       <!------------------ part II: large middle picture ------------------->
       <div class="mx-3 position-relative" style="width: 500px;">
         <% if @costume.photos.present? %>
